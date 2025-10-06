@@ -45,17 +45,18 @@ export const Header: React.FC = () => {
 					: 'bg-transparent'
 			].join(' ')}
 		>
-			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex items-center justify-between h-16">
+			<div className="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+				<div className="flex items-center justify-between h-14 xs:h-16">
 					{/* Logo */}
 					<Link 
 						href="/" 
-						className="flex items-center space-x-2 group"
+						className="flex items-center space-x-1 xs:space-x-2 group"
 					>
-						<div className="w-8 h-8 bg-black rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-							<span className="text-white font-bold text-sm">V</span>
+						<div className="w-7 h-7 xs:w-8 xs:h-8 bg-black rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+							<span className="text-white font-bold text-xs xs:text-sm">V</span>
 						</div>
-						<span className="font-bold text-xl text-gray-900 hidden sm:block">Virtual Office</span>
+						<span className="font-bold text-lg xs:text-xl text-gray-900 hidden xs:block">Virtual Office</span>
+						<span className="font-bold text-lg text-gray-900 block xs:hidden">VO</span>
 					</Link>
 
 					{/* Desktop Navigation */}
@@ -88,31 +89,32 @@ export const Header: React.FC = () => {
 					</nav>
 
 					{/* Right Section */}
-					<div className="flex items-center space-x-4">
+					<div className="flex items-center space-x-2 xs:space-x-4">
 						{/* Auth Links - Desktop */}
 						<div className="hidden md:flex items-center space-x-1">
 							<Link 
 								href="/login" 
-								className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors duration-200"
+								className="px-3 xs:px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors duration-200"
 							>
 								Login
 							</Link>
 							<Link 
 								href="/book" 
-								className="inline-flex items-center px-4 py-2 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-200 group"
+								className="inline-flex items-center px-3 xs:px-4 py-2 bg-black text-white text-xs xs:text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-200 group"
 							>
-								Get Started
-								<ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+								<span className="hidden xs:inline">Get Started</span>
+								<span className="xs:hidden">Start</span>
+								<ArrowRight className="ml-1 xs:ml-2 w-3 h-3 xs:w-4 xs:h-4 group-hover:translate-x-1 transition-transform duration-200" />
 							</Link>
 						</div>
 
 						{/* Mobile menu button */}
 						<button
 							onClick={() => setOpen(!open)}
-							className="md:hidden p-2 text-gray-600 hover:text-black transition-colors duration-200"
+							className="md:hidden p-2 touch-target text-gray-600 hover:text-black transition-colors duration-200 rounded-lg hover:bg-gray-100"
 							aria-label="Toggle menu"
 						>
-							{open ? <X size={20} /> : <Menu size={20} />}
+							{open ? <X size={18} className="xs:w-5 xs:h-5" /> : <Menu size={18} className="xs:w-5 xs:h-5" />}
 						</button>
 					</div>
 				</div>
@@ -126,9 +128,9 @@ export const Header: React.FC = () => {
 						animate={{ opacity: 1, height: 'auto' }}
 						exit={{ opacity: 0, height: 0 }}
 						transition={{ duration: 0.3, ease: 'easeInOut' }}
-						className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+						className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-lg"
 					>
-						<div className="px-4 py-6 space-y-4">
+						<div className="px-4 xs:px-6 py-4 xs:py-6 space-y-3 xs:space-y-4">
 							{NAV_ITEMS.map((item) => {
 								const isActive = pathname === item.href
 								return (
@@ -136,10 +138,10 @@ export const Header: React.FC = () => {
 										key={item.href}
 										href={item.href}
 										className={[
-											'block text-lg font-medium transition-colors duration-200',
+											'block text-base xs:text-lg font-medium transition-colors duration-200 py-2 px-2 rounded-lg touch-target',
 											isActive 
-												? 'text-black' 
-												: 'text-gray-600'
+												? 'text-black bg-gray-50' 
+												: 'text-gray-600 hover:text-black hover:bg-gray-50'
 										].join(' ')}
 									>
 										{item.label}
@@ -147,16 +149,16 @@ export const Header: React.FC = () => {
 								)
 							})}
 							
-							<div className="pt-4 border-t border-gray-100 space-y-3">
+							<div className="pt-3 xs:pt-4 border-t border-gray-100 space-y-2 xs:space-y-3">
 								<Link 
 									href="/login" 
-									className="block text-center py-2 text-gray-700 font-medium"
+									className="block text-center py-2 xs:py-3 text-gray-700 font-medium touch-target rounded-lg hover:bg-gray-50"
 								>
 									Login
 								</Link>
 								<Link 
 									href="/book" 
-									className="block text-center py-3 bg-black text-white font-medium rounded-full"
+									className="block text-center py-3 xs:py-4 bg-black text-white font-medium rounded-full touch-target hover:bg-gray-800 transition-colors"
 								>
 									Get Started
 								</Link>

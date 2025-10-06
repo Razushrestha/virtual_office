@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
 import { 
   Calendar,
@@ -1005,18 +1004,6 @@ Always start early, prepare your documents properly, and consult your trusted ed
   return (
     <>
       <SEOKeywords page="blog" location="kathmandu" />
-      <Head>
-        <title>Study Abroad Blog - Expert Guides, Tips & University Information Nepal | Virtual Office</title>
-        <meta name="description" content="Get expert study abroad advice, university guides, visa tips, scholarship information and success stories from leading consultancy in Nepal. Comprehensive resources for Nepali students planning to study overseas." />
-        <meta name="keywords" content="study abroad blog nepal, university guides kathmandu, visa tips nepal, scholarship information, international education consultancy, study overseas from nepal, education consultancy kathmandu, IELTS preparation nepal, TOEFL nepal, SOP writing help, visa interview tips" />
-        <meta property="og:title" content="Study Abroad Blog - Expert Guides & Tips Nepal" />
-        <meta property="og:description" content="Comprehensive study abroad resources and expert guidance for Nepali international students" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Study Abroad Blog - Expert Guides & Tips Nepal" />
-        <meta name="twitter:description" content="Comprehensive study abroad resources and expert guidance for Nepali international students" />
-        <link rel="canonical" href="/blog" />
-      </Head>
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

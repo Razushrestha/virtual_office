@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative flex min-h-[88vh] flex-col justify-center overflow-hidden">
+    <section className="relative flex min-h-[85vh] xs:min-h-[88vh] sm:min-h-[90vh] flex-col justify-center overflow-hidden">
       {/* Light texture layer */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.01]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
@@ -43,46 +43,46 @@ export const Hero: React.FC = () => {
       }} />
       {/* Animated background gradient overlay */}
       <div className={`pointer-events-none absolute inset-0 bg-gradient-hero opacity-30 ${shouldReduceMotion ? '' : 'animate-gradient-move'}`} />
-      {/* Decorative floating blobs - light and airy */}
+      {/* Decorative floating blobs - responsive sizes */}
       <motion.span
         aria-hidden="true"
-        className="absolute -top-20 -left-16 block h-[420px] w-[420px] rounded-full bg-violet-300/15 blur-3xl"
+        className="absolute -top-16 -left-12 xs:-top-20 xs:-left-16 block h-[300px] w-[300px] xs:h-[420px] xs:w-[420px] sm:h-[500px] sm:w-[500px] rounded-full bg-violet-300/15 blur-3xl"
         animate={shouldReduceMotion ? {} : { y: [0, -25, 0], rotate: [0, 25, -10, 0] }}
         transition={shouldReduceMotion ? {} : { duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.span
         aria-hidden="true"
-        className="absolute -bottom-24 -right-10 block h-[340px] w-[340px] rounded-full bg-blue-300/15 blur-3xl"
+        className="absolute -bottom-20 -right-8 xs:-bottom-24 xs:-right-10 block h-[250px] w-[250px] xs:h-[340px] xs:w-[340px] sm:h-[400px] sm:w-[400px] rounded-full bg-blue-300/15 blur-3xl"
         animate={shouldReduceMotion ? {} : { y: [0, 30, 0] }}
         transition={shouldReduceMotion ? {} : { duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
       <div className="absolute inset-0 -z-10 flex items-center justify-center">
         <div className="h-full w-full opacity-25 bg-[radial-gradient(circle_at_center,#8b5cf6_0%,transparent_60%)]" />
       </div>
-      <div className="mx-auto grid w-full max-w-7xl gap-14 px-6 py-24 md:grid-cols-2 md:py-32">
+      <div className="container-responsive grid w-full max-w-7xl gap-8 xs:gap-10 sm:gap-14 py-16 xs:py-20 sm:py-24 md:grid-cols-2 md:py-32">
         <div className="relative z-10 flex flex-col justify-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-1 text-xs font-medium text-violet-700 shadow-soft-lg">
+          <div className="mb-3 xs:mb-4 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 xs:px-4 py-1 text-xs font-medium text-violet-700 shadow-soft-lg">
             <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 animate-pulse-soft" />
             Smart Guidance. Real Outcomes.
           </div>
-          <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="text-balance text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             <span className="gradient-text bg-clip-text text-transparent">Find Your Perfect Study Destination</span>
-            <span className="block pt-2 text-gray-800">In <span className="relative inline-block"><span className="relative z-10 bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">60 Seconds</span><span className="absolute inset-x-1 -bottom-1 block h-2 rounded-full bg-violet-500/30 blur-sm" /></span>.</span>
+            <span className="block pt-1 xs:pt-2 text-gray-800 text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">In <span className="relative inline-block"><span className="relative z-10 bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">60 Seconds</span><span className="absolute inset-x-1 -bottom-1 block h-1 xs:h-2 rounded-full bg-violet-500/30 blur-sm" /></span>.</span>
           </h1>
-          <p className="mt-6 max-w-prose text-lg leading-relaxed text-gray-600">
+          <p className="mt-4 xs:mt-6 max-w-prose text-sm xs:text-base sm:text-lg leading-relaxed text-gray-600">
             Blend powerful AI matching with human expertise. Instantly shortlist programs, understand admission chances, and plan a visa-proof application strategy.
           </p>
-          <div className="mt-6">
+          <div className="mt-5 xs:mt-6">
             <label className="mb-2 block text-xs font-medium text-gray-600" htmlFor="hero-search">Where do you want to study?</label>
-            <div className="flex w-full overflow-hidden rounded-xl border border-gray-300 bg-white shadow-lg hover:shadow-xl transition-all duration-300 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-200 focus-within:shadow-xl">
+            <div className="flex w-full overflow-hidden rounded-lg xs:rounded-xl border border-gray-300 bg-white shadow-lg hover:shadow-xl transition-all duration-300 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-200 focus-within:shadow-xl">
               <input 
                 id="hero-search" 
-                className="flex-1 bg-transparent px-6 py-4 text-sm text-gray-800 placeholder:text-gray-400 outline-none" 
+                className="flex-1 bg-transparent px-4 xs:px-6 py-3 xs:py-4 text-sm text-gray-800 placeholder:text-gray-400 outline-none" 
                 placeholder="e.g. Canada, UK, Australia" 
               />
               <button 
                 type="button" 
-                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-white font-bold text-sm transition-all duration-300 hover:from-blue-700 hover:via-violet-700 hover:to-purple-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 active:scale-95"
+                className="group relative px-6 xs:px-8 py-3 xs:py-4 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-white font-bold text-xs xs:text-sm transition-all duration-300 hover:from-blue-700 hover:via-violet-700 hover:to-purple-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 active:scale-95"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">

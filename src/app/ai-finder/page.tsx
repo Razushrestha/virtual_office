@@ -1,7 +1,6 @@
 "use client"
 import React, { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
 import { Button } from '../../components/ui/Button'
 import { Input } from '../../components/ui/Input'
@@ -677,18 +676,6 @@ export default function AIFinderPage() {
   return (
     <>
       <SEOKeywords page="ai-finder" location="kathmandu" />
-      <Head>
-        <title>AI University Finder Nepal - Smart University Matching Tool | Virtual Office</title>
-        <meta name="description" content="Find your perfect university with our AI-powered matching tool. Get personalized university recommendations based on your profile, budget, and preferences. Free consultation for Nepali students." />
-        <meta name="keywords" content="AI university finder nepal, university matching tool, smart university search, personalized university recommendations, study abroad AI tool, university finder kathmandu, education AI nepal" />
-        <meta property="og:title" content="AI University Finder Nepal - Smart University Matching Tool" />
-        <meta property="og:description" content="Find your perfect university with AI-powered matching technology and expert guidance" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI University Finder Nepal - Smart University Matching Tool" />
-        <meta name="twitter:description" content="Find your perfect university with AI-powered matching technology and expert guidance" />
-        <link rel="canonical" href="/ai-finder" />
-      </Head>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

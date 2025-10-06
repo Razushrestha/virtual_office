@@ -589,18 +589,6 @@ export default function SuccessPage() {
   return (
     <>
       <SEOKeywords page="success" location="kathmandu" />
-      <Head>
-        <title>Nepali Student Success Stories - Study Abroad Achievements Nepal | Virtual Office</title>
-        <meta name="description" content="Read inspiring success stories from Nepali students who achieved their study abroad dreams with Virtual Office Nepal. Real visa approvals, scholarships, and university acceptances from Kathmandu, Pokhara, Chitwan students." />
-        <meta name="keywords" content="nepali student success stories, study abroad success nepal, nepali student testimonials, visa approval stories nepal, scholarship winners nepal, university acceptance nepal, study abroad testimonials kathmandu, student achievements" />
-        <meta property="og:title" content="Nepali Student Success Stories - Study Abroad Achievements" />
-        <meta property="og:description" content="Inspiring success stories from Nepali students who achieved their study abroad dreams" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Nepali Student Success Stories - Study Abroad Achievements" />
-        <meta name="twitter:description" content="Inspiring success stories from Nepali students who achieved their study abroad dreams" />
-        <link rel="canonical" href="/success" />
-      </Head>
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

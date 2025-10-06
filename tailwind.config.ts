@@ -7,6 +7,22 @@ const config: Config = {
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}'
 	],
 	theme: {
+		screens: {
+			'xs': '375px',     // iPhone SE and similar small phones
+			'sm': '640px',     // Large phones and small tablets
+			'md': '768px',     // Tablets and iPad Mini
+			'lg': '1024px',    // iPad Pro and small laptops
+			'xl': '1280px',    // Desktop and large tablets in landscape
+			'2xl': '1536px',   // Large desktop screens
+			'3xl': '1920px',   // Ultra-wide screens
+			// Device-specific breakpoints
+			'iphone-se': '375px',
+			'iphone': '390px',
+			'iphone-pro': '428px',
+			'ipad': '820px',
+			'ipad-pro': '1024px',
+			'surface': '912px',
+		},
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif']

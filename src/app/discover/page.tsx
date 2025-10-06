@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
 import { Search, Filter, Globe, DollarSign, Clock, GraduationCap, Users, TrendingUp, Star, MapPin, BookOpen, Award } from 'lucide-react'
 
@@ -213,18 +212,6 @@ export default function DiscoverPage() {
   return (
     <>
       <SEOKeywords page="discover" location="kathmandu" />
-      <Head>
-        <title>Discover Study Destinations Nepal - Compare Countries & Universities | Virtual Office</title>
-        <meta name="description" content="Discover best study abroad destinations for Nepali students. Compare countries, universities, costs, and scholarships for Canada, Australia, Germany, USA, UK. Expert guidance from Nepal's leading consultancy." />
-        <meta name="keywords" content="study abroad destinations nepal, compare countries study abroad, best universities for nepali students, study abroad cost comparison, canada vs australia vs germany, university finder nepal, education destinations" />
-        <meta property="og:title" content="Discover Study Destinations Nepal - Compare Countries & Universities" />
-        <meta property="og:description" content="Find your perfect study abroad destination with expert guidance from Nepal's leading education consultancy" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Discover Study Destinations Nepal - Compare Countries & Universities" />
-        <meta name="twitter:description" content="Find your perfect study abroad destination with expert guidance from Nepal's leading education consultancy" />
-        <link rel="canonical" href="/discover" />
-      </Head>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

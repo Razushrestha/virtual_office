@@ -1,5 +1,6 @@
 import './globals.css'
 import { ReactNode } from 'react'
+import Script from 'next/script'
 import { Header } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
@@ -71,6 +72,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en" className="h-full">
 			<body className="min-h-full bg-white text-gray-900 antialiased">
+				{/* Google Analytics */}
+				<Script 
+					src="https://www.googletagmanager.com/gtag/js?id=G-1PE8YXYWE1" 
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-1PE8YXYWE1');
+					`}
+				</Script>
+				
 				<ThemeProvider>
 					<div className="flex min-h-screen flex-col">
 						<Header />

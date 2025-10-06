@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
 import { MapPin, Phone, Mail, Clock, Users, Award, Globe, GraduationCap } from 'lucide-react'
@@ -72,15 +71,6 @@ export default function NepalCitiesPage() {
   return (
     <>
       <SEOKeywords page="cities" location="nepal" />
-      <Head>
-        <title>Education Consultancy Services in Nepal Cities - Bharatpur, Birgunj, Dharan | Virtual Office</title>
-        <meta name="description" content="Professional education consultancy services across major Nepal cities including Bharatpur, Birgunj, Dharan, Janakpur, Hetauda, Nepalgunj. Expert study abroad guidance for students in every district." />
-        <meta name="keywords" content="education consultancy bharatpur, study abroad birgunj, consultancy dharan, education services janakpur, study abroad hetauda, consultancy nepalgunj, nepal cities education, district wise consultancy services" />
-        <meta property="og:title" content="Education Consultancy Services in Nepal Cities" />
-        <meta property="og:description" content="Professional education consultancy services across major Nepal cities" />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="/cities" />
-      </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         {/* Background Decorations */}

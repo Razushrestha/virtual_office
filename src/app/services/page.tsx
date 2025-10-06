@@ -1,209 +1,21 @@
 'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
+import { services, serviceCategories, stats } from '../../data/services'
 import { 
-  FileText, 
-  Send, 
-  Shield, 
-  Plane, 
-  Users, 
-  CheckCircle, 
-  Star, 
-  Clock, 
-  DollarSign, 
-  Award, 
-  Zap, 
-  Target, 
-  BookOpen, 
-  MessageCircle,
   ArrowRight,
   Phone,
-  Calendar
+  Calendar,
+  Zap,
+  Clock,
+  Star,
+  CheckCircle,
+  MessageCircle
 } from 'lucide-react'
 
 export default function ServicesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
-
-  const serviceCategories = ['All', 'Applications', 'Documents', 'Visa & Travel', 'Career Support']
-
-  const services = [
-    {
-      id: 'sop-writing',
-      title: 'SOP Writing',
-      shortDesc: 'AI-assisted drafts + expert review',
-      fullDesc: 'Professional statement of purpose writing with AI-powered initial drafts and expert human review to create compelling narratives.',
-      price: '$75',
-      originalPrice: '$120',
-      icon: FileText,
-      gradient: 'from-blue-400 to-indigo-600',
-      bgGradient: 'from-blue-50 to-indigo-50',
-      category: 'Applications',
-      duration: '3-5 days',
-      satisfaction: '98%',
-      features: [
-        'AI-powered initial draft',
-        'Expert writer review & editing',
-        'Unlimited revisions',
-        'University-specific customization',
-        'Plagiarism check included',
-        '24/7 support'
-      ],
-      popular: false,
-      savings: 'Save $45',
-      testimonial: {
-        text: 'The SOP they created helped me get into my dream university. The blend of AI efficiency and human expertise was perfect.',
-        author: 'Sarah Chen',
-        university: 'Stanford University'
-      }
-    },
-    {
-      id: 'application-processing',
-      title: 'Complete Application Management',
-      shortDesc: 'End-to-end submission & tracking',
-      fullDesc: 'Full application management from document preparation to submission tracking with real-time status updates.',
-      price: '$199',
-      originalPrice: '$280',
-      icon: Send,
-      gradient: 'from-emerald-400 to-teal-600',
-      bgGradient: 'from-emerald-50 to-teal-50',
-      category: 'Applications',
-      duration: '2-3 weeks',
-      satisfaction: '97%',
-      features: [
-        'Complete application submission',
-        'Real-time tracking dashboard',
-        'Deadline management',
-        'University communication handling',
-        'Status update notifications',
-        'Document organization'
-      ],
-      popular: true,
-      savings: 'Save $81',
-      testimonial: {
-        text: 'They handled everything perfectly. I could focus on my studies while they managed all my applications seamlessly.',
-        author: 'David Kumar',
-        university: 'University of Toronto'
-      }
-    },
-    {
-      id: 'document-verification',
-      title: 'Smart Document Verification',
-      shortDesc: 'OCR scanning & integrity checks',
-      fullDesc: 'Advanced document verification using OCR technology and integrity checks to ensure all your documents meet university standards.',
-      price: '$49',
-      originalPrice: '$75',
-      icon: Shield,
-      gradient: 'from-amber-400 to-orange-600',
-      bgGradient: 'from-amber-50 to-orange-50',
-      category: 'Documents',
-      duration: '1-2 days',
-      satisfaction: '99%',
-      features: [
-        'OCR scanning technology',
-        'Integrity verification',
-        'Format compliance check',
-        'Error detection & correction',
-        'Digital certification',
-        'Instant report generation'
-      ],
-      popular: false,
-      savings: 'Save $26',
-      testimonial: {
-        text: 'Caught several formatting issues that would have delayed my application. Super thorough and fast!',
-        author: 'Emma Wilson',
-        university: 'Oxford University'
-      }
-    },
-    {
-      id: 'visa-guidance',
-      title: 'Visa Interview Coaching',
-      shortDesc: 'Interview prep & form assistance',
-      fullDesc: 'Comprehensive visa preparation including mock interviews, form assistance, and expert guidance to maximize approval chances.',
-      price: '$129',
-      originalPrice: '$180',
-      icon: Plane,
-      gradient: 'from-purple-400 to-violet-600',
-      bgGradient: 'from-purple-50 to-violet-50',
-      category: 'Visa & Travel',
-      duration: '1 week',
-      satisfaction: '96%',
-      features: [
-        'Mock interview sessions',
-        'Form completion assistance',
-        'Document preparation guide',
-        'Country-specific guidance',
-        'Success rate tracking',
-        'Post-interview support'
-      ],
-      popular: false,
-      savings: 'Save $51',
-      testimonial: {
-        text: 'The mock interviews gave me so much confidence. Got my visa approved on the first try!',
-        author: 'Michael Zhang',
-        university: 'University of Melbourne'
-      }
-    },
-    {
-      id: 'career-counseling',
-      title: 'Career Path Consultation',
-      shortDesc: 'Expert guidance for career planning',
-      fullDesc: 'Personalized career counseling to help you choose the right program and plan your career path with industry insights.',
-      price: '$89',
-      originalPrice: '$130',
-      icon: Target,
-      gradient: 'from-rose-400 to-pink-600',
-      bgGradient: 'from-rose-50 to-pink-50',
-      category: 'Career Support',
-      duration: '1-2 sessions',
-      satisfaction: '95%',
-      features: [
-        'One-on-one consultation',
-        'Career assessment test',
-        'Industry insights report',
-        'Program recommendations',
-        'ROI analysis',
-        'Follow-up support'
-      ],
-      popular: false,
-      savings: 'Save $41',
-      testimonial: {
-        text: 'Helped me discover the perfect program that aligned with my career goals. Invaluable guidance!',
-        author: 'Priya Patel',
-        university: 'MIT'
-      }
-    },
-    {
-      id: 'scholarship-hunting',
-      title: 'Scholarship Application Support',
-      shortDesc: 'Find & apply for scholarships',
-      fullDesc: 'Comprehensive scholarship search and application support to help reduce your education costs significantly.',
-      price: '$159',
-      originalPrice: '$220',
-      icon: Award,
-      gradient: 'from-cyan-400 to-blue-600',
-      bgGradient: 'from-cyan-50 to-blue-50',
-      category: 'Applications',
-      duration: '2-4 weeks',
-      satisfaction: '94%',
-      features: [
-        'Scholarship database access',
-        'Eligibility assessment',
-        'Application assistance',
-        'Essay writing support',
-        'Deadline tracking',
-        'Success rate optimization'
-      ],
-      popular: false,
-      savings: 'Save $61',
-      testimonial: {
-        text: 'Found scholarships worth $15,000! The team knows exactly where to look and how to apply.',
-        author: 'Alex Johnson',
-        university: 'Harvard University'
-      }
-    }
-  ]
 
   const filteredServices = selectedCategory === 'All' 
     ? services 
@@ -224,28 +36,9 @@ export default function ServicesPage() {
     }
   }
 
-  const stats = [
-    { icon: Users, label: 'Students Helped', value: '10,000+' },
-    { icon: CheckCircle, label: 'Success Rate', value: '97%' },
-    { icon: Star, label: 'Average Rating', value: '4.9/5' },
-    { icon: Clock, label: 'Avg. Processing Time', value: '3 days' }
-  ]
-
   return (
     <>
       <SEOKeywords page="services" location="kathmandu" />
-      <Head>
-        <title>Study Abroad Services Nepal - University Application, Visa, Scholarships | Virtual Office</title>
-        <meta name="description" content="Complete study abroad services in Nepal - University applications, visa assistance, scholarship guidance, SOP writing, IELTS preparation. Expert consultancy services in Kathmandu, Pokhara, Chitwan." />
-        <meta name="keywords" content="study abroad services nepal, university application nepal, visa assistance kathmandu, scholarship guidance, SOP writing service, IELTS preparation nepal, education consultancy services, study abroad help pokhara" />
-        <meta property="og:title" content="Study Abroad Services Nepal - Complete Education Consultancy" />
-        <meta property="og:description" content="Expert study abroad services in Nepal - from university applications to visa assistance" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Study Abroad Services Nepal - Complete Education Consultancy" />
-        <meta name="twitter:description" content="Expert study abroad services in Nepal - from university applications to visa assistance" />
-        <link rel="canonical" href="/services" />
-      </Head>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

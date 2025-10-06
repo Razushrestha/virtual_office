@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
 import { BookOpen, Users, Globe, GraduationCap, FileText, Award, Phone, Mail } from 'lucide-react'
@@ -75,15 +74,6 @@ export default function NepaliPage() {
   return (
     <>
       <SEOKeywords page="nepali" location="kathmandu" />
-      <Head>
-        <title>Consultancy Meaning in Nepali - परामर्श सेवा | Virtual Office Nepal</title>
-        <meta name="description" content="Consultancy meaning in Nepali (परामर्श सेवा). Learn study abroad terms in Nepali language. Complete guide to education consultancy services in Nepal with Nepali translations." />
-        <meta name="keywords" content="consultancy meaning in nepali, परामर्श सेवा, study abroad nepali, विदेशी अध्ययन, visa application nepali, education consultancy nepal, नेपाली भाषामा शिक्षा परामर्श" />
-        <meta property="og:title" content="Consultancy Meaning in Nepali - परामर्श सेवा" />
-        <meta property="og:description" content="Learn study abroad terms in Nepali language with expert guidance" />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="/nepali" />
-      </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         {/* Background Decorations */}

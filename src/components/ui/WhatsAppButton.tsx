@@ -92,42 +92,42 @@ Please guide me with the study abroad process. Thank you!`
       {/* WhatsApp Floating Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-20 right-4 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg flex items-center justify-center transition-colors duration-300"
+        className="fixed bottom-16 right-3 xs:bottom-20 xs:right-4 sm:bottom-24 sm:right-4 z-50 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-2xl flex items-center justify-center transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, duration: 0.5 }}
       >
-        <MessageCircle className="w-6 h-6" />
+        <MessageCircle className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
       </motion.button>
 
       {/* Form Modal */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-2 xs:p-4 sm:p-6 bg-black/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              className="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 w-full max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl max-h-[95vh] xs:max-h-[90vh] overflow-y-auto"
               initial={{ opacity: 0, scale: 0.8, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 50 }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-white" />
+              <div className="flex items-center justify-between mb-4 xs:mb-6">
+                <div className="flex items-center gap-2 xs:gap-3">
+                  <div className="w-8 h-8 xs:w-10 xs:h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <MessageCircle className="w-4 h-4 xs:w-5 xs:h-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900">WhatsApp Consultation</h2>
-                    <p className="text-sm text-gray-600">Fill out your details for personalized guidance</p>
+                    <h2 className="text-lg xs:text-xl font-bold text-gray-900">WhatsApp Consultation</h2>
+                    <p className="text-xs xs:text-sm text-gray-600 hidden xs:block">Fill out your details for personalized guidance</p>
                   </div>
                 </div>
                 <button
@@ -139,16 +139,16 @@ Please guide me with the study abroad process. Thank you!`
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 xs:space-y-6">
                 {/* Personal Information */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <User className="w-5 h-5 text-blue-600" />
+                <div className="space-y-3 xs:space-y-4">
+                  <h3 className="text-base xs:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <User className="w-4 h-4 xs:w-5 xs:h-5 text-blue-600" />
                     Personal Information
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-xs xs:text-sm font-medium text-gray-700 mb-1 xs:mb-2">
                         Full Name *
                       </label>
                       <input
@@ -157,7 +157,7 @@ Please guide me with the study abroad process. Thank you!`
                         value={formData.fullName}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        className="w-full px-3 xs:px-4 py-2 xs:py-3 text-sm xs:text-base border border-gray-300 rounded-lg xs:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -193,12 +193,12 @@ Please guide me with the study abroad process. Thank you!`
                 </div>
 
                 {/* Academic Information */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <GraduationCap className="w-5 h-5 text-purple-600" />
+                <div className="space-y-3 xs:space-y-4">
+                  <h3 className="text-base xs:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4 xs:w-5 xs:h-5 text-purple-600" />
                     Academic Information
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Current Education Level *
@@ -259,12 +259,12 @@ Please guide me with the study abroad process. Thank you!`
                 </div>
 
                 {/* Study Preferences */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <Globe className="w-5 h-5 text-orange-600" />
+                <div className="space-y-3 xs:space-y-4">
+                  <h3 className="text-base xs:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <Globe className="w-4 h-4 xs:w-5 xs:h-5 text-orange-600" />
                     Study Preferences
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Preferred Country *
@@ -330,9 +330,9 @@ Please guide me with the study abroad process. Thank you!`
                 </div>
 
                 {/* Additional Message */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-green-600" />
+                <div className="space-y-3 xs:space-y-4">
+                  <h3 className="text-base xs:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <FileText className="w-4 h-4 xs:w-5 xs:h-5 text-green-600" />
                     Additional Information
                   </h3>
                   <div>
@@ -351,12 +351,12 @@ Please guide me with the study abroad process. Thank you!`
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-4">
+                <div className="pt-3 xs:pt-4">
                   <button
                     type="submit"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2"
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 xs:py-4 px-4 xs:px-6 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2 text-sm xs:text-base"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4 xs:w-5 xs:h-5" />
                     Send to WhatsApp
                   </button>
                   <p className="text-xs text-gray-500 text-center mt-2">

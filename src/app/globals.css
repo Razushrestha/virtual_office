@@ -4,6 +4,8 @@
 
 html, body { scroll-behavior: smooth; }
 
-.gradient-text {
-	@apply bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent;
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent;
+  }
 }

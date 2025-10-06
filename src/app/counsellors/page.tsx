@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import { SEOKeywords } from '../../components/seo/SEOKeywords'
 import { 
   Star,
@@ -297,18 +296,6 @@ export default function CounsellorsPage() {
   return (
     <>
       <SEOKeywords page="counsellors" location="kathmandu" />
-      <Head>
-        <title>Expert Study Abroad Counsellors Nepal - Get Free Consultation Kathmandu | Virtual Office</title>
-        <meta name="description" content="Connect with certified study abroad counsellors in Nepal for free consultation. Expert guidance on university selection, visa applications, scholarships, and SOP writing from experienced education consultants in Kathmandu, Pokhara, Chitwan." />
-        <meta name="keywords" content="study abroad counsellors nepal, education consultants kathmandu, free consultation nepal, university selection, visa guidance nepal, scholarship experts, SOP writing help, study abroad advisors pokhara, education consultancy chitwan" />
-        <meta property="og:title" content="Expert Study Abroad Counsellors Nepal - Free Consultation" />
-        <meta property="og:description" content="Get expert guidance from certified education consultants in Nepal for your study abroad journey" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Expert Study Abroad Counsellors Nepal - Free Consultation" />
-        <meta name="twitter:description" content="Get expert guidance from certified education consultants in Nepal for your study abroad journey" />
-        <link rel="canonical" href="/counsellors" />
-      </Head>
       <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         {/* Background Decorations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
