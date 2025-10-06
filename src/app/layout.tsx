@@ -71,6 +71,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en" className="h-full">
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</head>
 			<body className="min-h-full bg-white text-gray-900 antialiased">
 				{/* Google Analytics */}
 				<Script 
@@ -87,6 +90,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				</Script>
 				
 				<ThemeProvider>
+					{/* Skip to main content link for keyboard navigation */}
+					<a href="#main-content" className="skip-link">
+						Skip to main content
+					</a>
+					
 					<div className="flex min-h-screen flex-col">
 						<Header />
 						<Breadcrumb />
@@ -94,7 +102,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 							<ThemeToggle />
 						</div>
 						<WhatsAppButton />
-						<main className="flex-1">{children}</main>
+						<main id="main-content" className="flex-1" role="main">{children}</main>
 						<Footer />
 					</div>
 				</ThemeProvider>

@@ -98,8 +98,10 @@ Please guide me with the study abroad process. Thank you!`
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, duration: 0.5 }}
+        aria-label="Open WhatsApp consultation form"
+        type="button"
       >
-        <MessageCircle className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
+        <MessageCircle className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" aria-hidden="true" />
       </motion.button>
 
       {/* Form Modal */}
@@ -133,8 +135,10 @@ Please guide me with the study abroad process. Thank you!`
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close consultation form"
+                  type="button"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
 

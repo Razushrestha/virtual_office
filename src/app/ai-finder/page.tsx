@@ -228,12 +228,14 @@ export default function AIFinderPage() {
             </motion.div>
             
             <motion.div variants={fadeInUp}>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Country of Residence</label>
+              <label className="mb-2 block text-sm font-medium text-gray-700" htmlFor="residence">Country of Residence</label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" aria-hidden="true" />
                 <select 
+                  id="residence"
                   {...form.register('residence')} 
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                  aria-describedby={form.formState.errors.residence ? "residence-error" : undefined}
                 >
                   <option value="">Select your country</option>
                   <option value="India">India</option>
@@ -244,7 +246,7 @@ export default function AIFinderPage() {
                 </select>
               </div>
               {form.formState.errors.residence && (
-                <p className="mt-1 text-sm text-red-600">{form.formState.errors.residence.message}</p>
+                <p className="mt-1 text-sm text-red-600" id="residence-error" role="alert">{form.formState.errors.residence.message}</p>
               )}
             </motion.div>
             

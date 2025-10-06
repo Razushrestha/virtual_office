@@ -23,15 +23,20 @@ const sizes: Record<string, string> = {
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', size = 'md', children, loading, ...props }, ref) => {
+  ({ className, variant = 'primary', size = 'md', children, loading, disabled, ...props }, ref) => {
     return (
       <button
         ref={ref}
         className={clsx(base, variants[variant], sizes[size], className)}
+        disabled={disabled || loading}
+        aria-disabled={disabled || loading}
         {...props}
       >
         {loading && (
-          <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+          <span 
+            className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" 
+            aria-hidden="true"
+          />
         )}
         {children}
       </button>

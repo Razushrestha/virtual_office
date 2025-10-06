@@ -63,6 +63,7 @@ export function Footer() {
       whileInView="animate"
       viewport={{ once: true }}
       variants={staggerContainer}
+      role="contentinfo"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-30">
@@ -96,14 +97,21 @@ export function Footer() {
                   className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
                   variants={fadeInUp}
                 >
+                  <label htmlFor="newsletter-email" className="sr-only">Email address</label>
                   <input
+                    id="newsletter-email"
                     type="email"
                     placeholder="Enter your email address"
                     className="flex-1 px-6 py-4 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30"
+                    aria-label="Email address for newsletter subscription"
                   />
-                  <button className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 group">
+                  <button 
+                    type="submit"
+                    className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 group"
+                    aria-label="Subscribe to newsletter"
+                  >
                     Subscribe
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </button>
                 </motion.div>
               </div>
@@ -167,19 +175,21 @@ export function Footer() {
               {/* Quick Links */}
               <motion.div variants={fadeInUp}>
                 <h4 className="text-lg font-bold text-gray-900 mb-6">Quick Links</h4>
-                <ul className="space-y-3">
-                  {quickLinks.map((link, index) => (
-                    <li key={index}>
-                      <a 
-                        href={link.href} 
-                        className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group"
-                      >
-                        <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <nav aria-label="Quick links">
+                  <ul className="space-y-3">
+                    {quickLinks.map((link, index) => (
+                      <li key={index}>
+                        <a 
+                          href={link.href} 
+                          className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                        >
+                          <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               </motion.div>
 
               {/* Study Destinations */}
@@ -220,18 +230,21 @@ export function Footer() {
                 {/* Social Links */}
                 <div className="mt-8">
                   <h5 className="text-sm font-semibold text-gray-900 mb-4">Follow Us</h5>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3" role="list">
                     {socialLinks.map((social, index) => {
                       const Icon = social.icon
+                      const platformName = social.href.split('/').pop()?.replace(/[^a-zA-Z]/g, '') || 'social media'
                       return (
                         <a
                           key={index}
                           href={social.href}
-                          className={`w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center text-gray-600 ${social.color} transition-all hover:shadow-lg hover:-translate-y-1`}
+                          className={`w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center text-gray-600 ${social.color} transition-all hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`Follow us on ${platformName.charAt(0).toUpperCase() + platformName.slice(1)}`}
+                          role="listitem"
                         >
-                          <Icon className="w-4 h-4" />
+                          <Icon className="w-4 h-4" aria-hidden="true" />
                         </a>
                       )
                     })}

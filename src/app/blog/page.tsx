@@ -1154,7 +1154,7 @@ Always start early, prepare your documents properly, and consult your trusted ed
                       <div className="flex items-center gap-3">
                         <img 
                           src={featuredPost.authorImage} 
-                          alt={featuredPost.author}
+                          alt={`${featuredPost.author} - Author profile picture`}
                           className="w-12 h-12 rounded-full object-cover"
                         />
                         <div>
@@ -1323,7 +1323,7 @@ Always start early, prepare your documents properly, and consult your trusted ed
                       <div className="relative overflow-hidden">
                         <img 
                           src={post.image} 
-                          alt={post.title}
+                          alt={`${post.title} - Featured image for blog post about ${post.category.toLowerCase()}`}
                           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

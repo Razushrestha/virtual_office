@@ -44,6 +44,7 @@ export const Header: React.FC = () => {
 					? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-100/50' 
 					: 'bg-transparent'
 			].join(' ')}
+			role="banner"
 		>
 			<div className="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-14 xs:h-16">
@@ -51,16 +52,17 @@ export const Header: React.FC = () => {
 					<Link 
 						href="/" 
 						className="flex items-center space-x-1 xs:space-x-2 group"
+						aria-label="Virtual Office - Home"
 					>
 						<div className="w-7 h-7 xs:w-8 xs:h-8 bg-black rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-							<span className="text-white font-bold text-xs xs:text-sm">V</span>
+							<span className="text-white font-bold text-xs xs:text-sm" aria-hidden="true">V</span>
 						</div>
 						<span className="font-bold text-lg xs:text-xl text-gray-900 hidden xs:block">Virtual Office</span>
 						<span className="font-bold text-lg text-gray-900 block xs:hidden">VO</span>
 					</Link>
 
 					{/* Desktop Navigation */}
-					<nav className="hidden md:flex items-center space-x-8">
+					<nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
 						{NAV_ITEMS.map((item) => {
 							const isActive = pathname === item.href
 							return (
@@ -73,6 +75,7 @@ export const Header: React.FC = () => {
 											? 'text-black' 
 											: 'text-gray-600 hover:text-black'
 									].join(' ')}
+									aria-current={isActive ? 'page' : undefined}
 								>
 									{item.label}
 									{isActive && (
@@ -81,6 +84,7 @@ export const Header: React.FC = () => {
 											className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black"
 											initial={false}
 											transition={{ type: "spring", stiffness: 500, damping: 30 }}
+											aria-hidden="true"
 										/>
 									)}
 								</Link>
@@ -112,9 +116,15 @@ export const Header: React.FC = () => {
 						<button
 							onClick={() => setOpen(!open)}
 							className="md:hidden p-2 touch-target text-gray-600 hover:text-black transition-colors duration-200 rounded-lg hover:bg-gray-100"
-							aria-label="Toggle menu"
+							aria-label={open ? "Close menu" : "Open menu"}
+							aria-expanded={open}
+							aria-controls="mobile-menu"
+							type="button"
 						>
-							{open ? <X size={18} className="xs:w-5 xs:h-5" /> : <Menu size={18} className="xs:w-5 xs:h-5" />}
+							{open ? 
+								<X size={18} className="xs:w-5 xs:h-5" aria-hidden="true" /> : 
+								<Menu size={18} className="xs:w-5 xs:h-5" aria-hidden="true" />
+							}
 						</button>
 					</div>
 				</div>
@@ -123,12 +133,15 @@ export const Header: React.FC = () => {
 			{/* Mobile Navigation */}
 			<AnimatePresence>
 				{open && (
-					<motion.div
+					<motion.nav
+						id="mobile-menu"
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: 'auto' }}
 						exit={{ opacity: 0, height: 0 }}
 						transition={{ duration: 0.3, ease: 'easeInOut' }}
 						className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-lg"
+						role="navigation"
+						aria-label="Mobile navigation"
 					>
 						<div className="px-4 xs:px-6 py-4 xs:py-6 space-y-3 xs:space-y-4">
 							{NAV_ITEMS.map((item) => {
@@ -143,6 +156,7 @@ export const Header: React.FC = () => {
 												? 'text-black bg-gray-50' 
 												: 'text-gray-600 hover:text-black hover:bg-gray-50'
 										].join(' ')}
+										aria-current={isActive ? 'page' : undefined}
 									>
 										{item.label}
 									</Link>
@@ -164,7 +178,7 @@ export const Header: React.FC = () => {
 								</Link>
 							</div>
 						</div>
-					</motion.div>
+					</motion.nav>
 				)}
 			</AnimatePresence>
 		</header>

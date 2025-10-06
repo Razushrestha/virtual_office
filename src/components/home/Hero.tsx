@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative flex min-h-[85vh] xs:min-h-[88vh] sm:min-h-[90vh] flex-col justify-center overflow-hidden">
+    <section className="relative flex min-h-[85vh] xs:min-h-[88vh] sm:min-h-[90vh] flex-col justify-center overflow-hidden" role="banner">
       {/* Light texture layer */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.01]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
@@ -83,35 +83,36 @@ export const Hero: React.FC = () => {
               <button 
                 type="button" 
                 className="group relative px-6 xs:px-8 py-3 xs:py-4 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-white font-bold text-xs xs:text-sm transition-all duration-300 hover:from-blue-700 hover:via-violet-700 hover:to-purple-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 active:scale-95"
+                aria-label="Search for study destinations"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                   Search
                 </span>
                 
                 {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
                 
                 {/* Sparkle effect */}
-                <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
                   <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 via-violet-400/20 to-purple-400/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
                 </div>
                 
                 {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700" aria-hidden="true"></div>
               </button>
             </div>
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/ai-finder" className="group relative rounded-lg bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 px-[1px] py-[1px] text-sm font-medium shadow-soft-lg transition hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400">
-              <span className="block rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 px-6 py-3 text-white backdrop-blur-md dark:from-violet-500 dark:to-blue-500">Try Our Free AI University Finder <span className="ml-1 inline-block translate-y-0 transition-transform group-hover:translate-y-[-2px]">→</span></span>
+              <span className="block rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 px-6 py-3 text-white backdrop-blur-md dark:from-violet-500 dark:to-blue-500">Try Our Free AI University Finder <span className="ml-1 inline-block translate-y-0 transition-transform group-hover:translate-y-[-2px]" aria-hidden="true">→</span></span>
             </Link>
-            <Link href="/book" className="rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition hover:border-violet-400 hover:bg-gray-50">
+            <Link href="/book" className="rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition hover:border-violet-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2">
               Book Counseling
             </Link>
-            <Link href="/discover" className="rounded-lg border border-transparent bg-violet-50 px-6 py-3 text-sm font-medium text-violet-700 hover:bg-violet-100">
+            <Link href="/discover" className="rounded-lg border border-transparent bg-violet-50 px-6 py-3 text-sm font-medium text-violet-700 hover:bg-violet-100 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2">
               Explore Countries
             </Link>
           </div>

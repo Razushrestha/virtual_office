@@ -2,10 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { scroll-behavior: smooth; }
+html, body { 
+  scroll-behavior: smooth; 
+}
+
+/* Accessibility improvements */
+@layer base {
+  /* High contrast focus styles for keyboard navigation */
+  *:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Better focus for buttons and interactive elements */
+  button:focus,
+  a:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  /* Skip to main content link */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 8px;
+    background-color: #1d4ed8;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .skip-link:focus {
+    left: 6px;
+    top: 6px;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6, #d946ef);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
