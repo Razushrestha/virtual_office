@@ -1,0 +1,321 @@
+// Prisma Schema for No1 Consultancy Platform
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Management
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  phone         String?
+  role          UserRole @default(STUDENT)
+  country       String?
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  profile       Profile?
+  documents     Document[]
+  applications  Application[]
+  bookings      Booking[]
+  sessions      Session[]
+  accounts      Account[]
+  finderSessions FinderSession[]
+  activities    ActivityLog[]
+
+  // Counsellor specific
+  counsellor    Counsellor?
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// User Profile & Preferences
+model Profile {
+  userId              String    @id
+  dateOfBirth         DateTime?
+  gpa                 Float?
+  ieltsScore          Float?
+  toeflScore          Float?
+  greScore            Int?
+  gmatScore           Int?
+  budget              Int?
+  preferredCountries  String[]
+  fieldOfStudy        String?
+  educationLevel      String?
+  workExperience      Int?      @default(0)
+  statements          Json?     // SOP, essays, etc.
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("profiles")
+}
+
+// Universities & Courses
+model University {
+  id              String    @id @default(cuid())
+  name            String
+  country         String
+  city            String?
+  ranking         Int?
+  tuitionEstimate Int?
+  website         String?
+  description     String?
+  requirements    Json?     // Admission requirements
+  intakes         String[]  // Intake months
+  scholarships    Json?     // Available scholarships
+  courses         Course[]
+  applications    Application[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@map("universities")
+}
+
+model Course {
+  id           String      @id @default(cuid())
+  universityId String
+  name         String
+  level        String      // Bachelor, Master, PhD
+  duration     String      // 2 years, 4 years
+  fees         Int?
+  requirements Json?       // Course specific requirements
+  description  String?
+  applications Application[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  university University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+
+  @@map("courses")
+}
+
+// AI Finder System
+model FinderSession {
+  id        String   @id @default(cuid())
+  userId    String
+  formData  Json     // User input data
+  matches   Json     // AI generated matches
+  fitScores Json?    // Detailed scoring
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("finder_sessions")
+}
+
+// Document Management
+model Document {
+  id        String         @id @default(cuid())
+  userId    String
+  type      DocumentType
+  filename  String
+  url       String
+  size      Int?
+  mimeType  String?
+  verified  Boolean        @default(false)
+  ocrText   String?        // Extracted text from OCR
+  status    DocumentStatus @default(PENDING)
+  uploadedAt DateTime      @default(now())
+  verifiedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("documents")
+}
+
+// Application Tracking
+model Application {
+  id           String            @id @default(cuid())
+  userId       String
+  universityId String
+  courseId     String?
+  status       ApplicationStatus @default(DRAFT)
+  fitScore     Int?              // AI calculated fit score
+  appliedAt    DateTime?
+  deadlineAt   DateTime?
+  notes        String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  university University  @relation(fields: [universityId], references: [id])
+  course     Course?     @relation(fields: [courseId], references: [id])
+
+  @@map("applications")
+}
+
+// Counsellor System
+model Counsellor {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  bio         String?
+  specialties String[]
+  rating      Float?   @default(0)
+  experience  Int?     // Years of experience
+  languages   String[]
+  timezone    String?
+  hourlyRate  Int?
+  available   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+
+  @@map("counsellors")
+}
+
+model Booking {
+  id           String        @id @default(cuid())
+  userId       String
+  counsellorId String
+  status       BookingStatus @default(PENDING)
+  scheduledAt  DateTime
+  duration     Int           @default(60) // Minutes
+  meetingLink  String?
+  notes        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  counsellor Counsellor @relation(fields: [counsellorId], references: [id])
+
+  @@map("bookings")
+}
+
+// Scholarships
+model Scholarship {
+  id                 String    @id @default(cuid())
+  name               String
+  amount             Int?
+  currency           String    @default("USD")
+  eligibilityCriteria String?
+  deadline           DateTime?
+  country            String?
+  level              String?   // Bachelor, Master, PhD
+  field              String?   // Field of study
+  provider           String?   // Organization providing scholarship
+  website            String?
+  description        String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@map("scholarships")
+}
+
+// Activity Logging
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String   // e.g., "ai_match_performed", "document_uploaded"
+  metadata  Json?    // Additional data
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("activity_logs")
+}
+
+// Leads & Marketing
+model Lead {
+  id        String   @id @default(cuid())
+  email     String?
+  phone     String?
+  name      String?
+  source    String?  // organic, google_ads, facebook, etc.
+  campaign  String?
+  country   String?
+  score     Int?     // Lead quality score
+  converted Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("leads")
+}
+
+// Enums
+enum UserRole {
+  STUDENT
+  COUNSELLOR
+  ADMIN
+}
+
+enum DocumentType {
+  PASSPORT
+  TRANSCRIPT
+  SOP
+  CV
+  IELTS
+  TOEFL
+  GRE
+  GMAT
+  OTHER
+}
+
+enum DocumentStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+  EXPIRED
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+  WAITLISTED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export async function GET(): Promise<Response> {
-  const baseUrl = 'https://virtualoffice.com' // Replace with your actual domain
+  const baseUrl = 'https://www.no1consultancy.com' // Your domain
   
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

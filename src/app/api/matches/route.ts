@@ -1,22 +1,41 @@
 import { NextResponse } from 'next/server'
+import { AIMatchingService } from '@lib/services/ai-matching'
+
+const aiMatchingService = new AIMatchingService()
 
 export async function POST(req: Request) {
-  const body = await req.json().catch(() => ({}))
-  const { country = 'Canada', course = 'Computer Science', budget = 20000 } = body
-  const seed = Math.random()
-  const base = [
-    { name: `${country} International University`, score: Math.round(80 + seed * 10) },
-    { name: `${country} College of ${course.split(' ')[0]}`, score: Math.round(75 + seed * 12) },
-    { name: `${country} Tech Institute`, score: Math.round(70 + seed * 15) },
-    { name: `${country} Global Academy`, score: Math.round(68 + seed * 14) },
-    { name: `${country} Advanced Studies Center`, score: Math.round(65 + seed * 13) }
-  ]
-  const matches = base
-    .map(m => ({ ...m, country, course, estTuition: budget + (Math.floor(Math.random() * 5000) - 2500) }))
-    .sort((a, b) => b.score - a.score)
-  return NextResponse.json({ matches, generatedAt: new Date().toISOString() })
+  try {
+    const body = await req.json()
+    
+    // Validate required fields
+    if (!body.fullName || !body.preferredCountry || !body.fieldOfStudy) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      )
+    }
+
+    // Generate AI-powered matches
+    const matches = await aiMatchingService.generateMatches(body)
+    
+    return NextResponse.json({ 
+      matches, 
+      generatedAt: new Date().toISOString(),
+      success: true
+    })
+  } catch (error) {
+    console.error('Error in matches API:', error)
+    return NextResponse.json(
+      { error: 'Failed to generate matches' },
+      { status: 500 }
+    )
+  }
 }
 
 export async function GET() {
-  return NextResponse.json({ status: 'ok', usage: 'POST with {country,course,budget}' })
+  return NextResponse.json({ 
+    status: 'ok', 
+    usage: 'POST with user profile data to get university matches',
+    requiredFields: ['fullName', 'preferredCountry', 'fieldOfStudy', 'budget']
+  })
 }
