@@ -59,8 +59,9 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 -z-10 flex items-center justify-center">
         <div className="h-full w-full opacity-25 bg-[radial-gradient(circle_at_center,#8b5cf6_0%,transparent_60%)]" />
       </div>
-      <div className="container-responsive grid w-full max-w-7xl gap-8 xs:gap-10 sm:gap-14 py-16 xs:py-20 sm:py-24 md:grid-cols-2 md:py-32">
-        <div className="relative z-10 flex flex-col justify-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-7xl py-16 xs:py-20 sm:py-24 md:py-32">
+        <div className="grid gap-8 xs:gap-10 sm:gap-14 md:grid-cols-2 items-center">
+          <div className="relative z-10 flex flex-col justify-center text-center lg:text-left mx-auto max-w-2xl lg:max-w-none">
           <div className="mb-3 xs:mb-4 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 xs:px-4 py-1 text-xs font-medium text-violet-700 shadow-soft-lg">
             <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 animate-pulse-soft" />
             Smart Guidance. Real Outcomes.
@@ -115,6 +116,7 @@ export const Hero: React.FC = () => {
             <Link href="/discover" className="rounded-lg border border-transparent bg-violet-50 px-6 py-3 text-sm font-medium text-violet-700 hover:bg-violet-100 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2">
               Explore Countries
             </Link>
+          </div>
           </div>
         </div>
         <div className="relative">
