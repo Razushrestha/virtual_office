@@ -118,16 +118,15 @@ export const Hero: React.FC = () => {
             </Link>
           </div>
           </div>
-        </div>
-        <div className="relative">
-          {/* Accent ring */}
+          <div className="relative">
+            {/* Accent ring */}
             <div className="pointer-events-none absolute -inset-1 -z-10 rounded-3xl bg-gradient-to-tr from-violet-500/50 via-blue-400/40 to-fuchsia-400/40 opacity-60 blur-2xl" />
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-            className="group relative rounded-3xl border border-white/40 bg-white/80 p-6 shadow-soft-lg backdrop-blur-xl dark:border-white/10 dark:bg-gray-700/60"
-          >
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+              className="group relative rounded-3xl border border-white/40 bg-white/80 p-6 shadow-soft-lg backdrop-blur-xl dark:border-white/10 dark:bg-gray-700/60"
+            >
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-500/10 via-transparent to-blue-500/10 opacity-0 transition group-hover:opacity-100" />
             <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-800 dark:text-gray-100">
               <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-tr from-violet-600 to-blue-500 text-[10px] font-bold text-white shadow">AI</span>
@@ -174,6 +173,7 @@ export const Hero: React.FC = () => {
               <Link href="/ai-finder" className="rounded bg-violet-600 px-2 py-1 text-white hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400">Start →</Link>
             </div>
           </motion.div>
+          </div>
         </div>
       </div>
     </section>
