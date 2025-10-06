@@ -2,7 +2,6 @@ import React from 'react'
 import { SEO } from '../components/seo/SEO'
 import { SEOKeywords } from '../components/seo/SEOKeywords'
 import { Hero } from '@components/home/Hero'
-import { Metrics } from '@components/home/Metrics'
 import { Steps } from '@components/home/Steps'
 import { SuccessWall } from '@components/home/SuccessWall'
 import { CountryPreview } from '@components/discover/CountryCards'
@@ -38,8 +37,7 @@ export default function HomePage() {
       />
       <SEOKeywords page="home" location="kathmandu" />
       <Hero />
-      <OnView y={40}><Metrics /></OnView>
-      <OnView y={40} delay={0.05}><Steps /></OnView>
+      <OnView y={40}><Steps /></OnView>
       <OnView y={40} delay={0.05}><SuccessWall /></OnView>
       <OnView y={40} delay={0.1}><CountryPreview /></OnView>
       <OnView y={40} delay={0.15}><ServicesSnapshot /></OnView>

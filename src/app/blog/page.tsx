@@ -41,6 +41,8 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedTag, setSelectedTag] = useState('All')
+  const [showAllPosts, setShowAllPosts] = useState(false)
+  const [postsToShow, setPostsToShow] = useState(6) // Initially show 6 posts
 
   // SEO-optimized categories with descriptive names
   const categories = [
@@ -55,29 +57,770 @@ export default function BlogPage() {
 
   const featuredPost = {
     id: 1,
-    title: 'Complete Guide to Studying in Canada 2024: Everything You Need to Know',
-    excerpt: 'Discover the ultimate guide to pursuing higher education in Canada, including top universities, visa requirements, scholarship opportunities, and insider tips from successful international students.',
-    content: 'Canada has emerged as one of the most popular destinations for international students, offering world-class education, multicultural environment, and excellent post-graduation opportunities...',
-    author: 'Dr. Sarah Johnson',
-    authorImage: 'https://images.unsplash.com/photo-1494790108755-2616b612b2c5?w=150',
-    authorBio: 'Study Abroad Expert & Former Immigration Officer',
-    date: '2024-10-01',
-    readTime: '12 min read',
-    category: 'Study Abroad',
-    tags: ['Canada', 'Masters', 'Visa', 'Universities'],
-    image: 'https://images.unsplash.com/photo-1503614472-8c93d56cd601?w=800',
-    views: '15.2K',
-    likes: '892',
-    comments: '156',
+    title: 'Step-by-Step Guide to Student Visa Processing (2025 Updated)',
+    excerpt: 'Complete guide to student visa processing with step-by-step instructions, requirements, and tips for a successful application in 2025.',
+    content: `Studying abroad is a dream for many students — but the visa process can often feel confusing and stressful. This complete guide will walk you through every step of student visa processing and explain the essential requirements you'll need to fulfill before traveling to your dream destination.
+
+✈️ **Step 1: Choose Your Destination and Course**
+
+Before applying for a student visa, you must decide which country and course you want to study.
+Each country has different visa rules, so always check the official immigration or embassy website.
+Make sure your selected course and institution are recognized and accredited by that country's education authority.
+
+**Tips:**
+• Research tuition fees and living costs.
+• Check post-study work opportunities.
+• Consult with your education consultant for eligibility criteria.
+
+📝 **Step 2: Receive the Offer Letter**
+
+Once you apply to a university or college and get accepted, you will receive an Offer Letter or Confirmation of Enrolment (CoE).
+This document is mandatory for the visa application.
+
+**You'll need:**
+• Academic transcripts and certificates
+• Valid passport
+• Proof of English proficiency (IELTS, TOEFL, or PTE)
+• Application fee payment`,
+    author: 'Visa Expert Team',
+    authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+    authorBio: 'Expert visa consultants with 10+ years of experience in student visa processing',
+    date: '2024-10-06',
+    readTime: '15 min read',
+    category: 'Visa Guide',
+    tags: ['Visa', 'Student Visa', '2025 Guide', 'Documentation', 'Process'],
+    image: 'https://images.unsplash.com/photo-1554734867-bf3c00a49371?w=800',
+    views: '25.3K',
+    likes: '1.8K',
+    comments: '342',
     featured: true,
     difficulty: 'Beginner',
     rating: 4.9,
-    downloadCount: '2.1K'
+    downloadCount: '3.2K'
   }
 
   const blogPosts = [
     {
+      id: 13,
+      title: 'Compare Student Visa Process: USA vs UK vs Canada vs Australia (2025 Edition)',
+      excerpt: 'Comprehensive comparison of student visa processes across all four major destinations with requirements, timelines, costs, and post-study work opportunities.',
+      content: `Choosing where to study abroad can be one of the biggest decisions in your academic journey.
+While the USA, UK, Canada, and Australia are all top destinations for international students, each has its own visa process, requirements, and benefits.
+
+In this guide, we compare the student visa processes for all four countries in 2025 — so you can make the best decision for your education and future career.
+
+🎓 **Step-by-Step Overview of Visa Processes**
+
+| Country | Visa Name | Application Type | Processing Time | Work Rights (During Study) |
+|---------|-----------|------------------|-----------------|---------------------------|
+| 🇺🇸 USA | F-1 Visa | DS-160 + Interview | 3–6 weeks | 20 hrs/week (on-campus only) |
+| 🇬🇧 UK | Student Visa (Tier 4) | Online via Gov.UK | 3–6 weeks | 20 hrs/week |
+| 🇨🇦 Canada | Study Permit | Online via IRCC | 4–8 weeks | 20 hrs/week |
+| 🇦🇺 Australia | Subclass 500 | Online via ImmiAccount | 4–6 weeks | 24 hrs/week (no limit during holidays) |
+
+🧾 **Document Requirements Comparison**
+
+| Requirement | USA | UK | Canada | Australia |
+|-------------|-----|----|---------| ----------|
+| Offer Letter / CAS / I-20 | ✅ I-20 Form | ✅ CAS Letter | ✅ LOA | ✅ CoE |
+| Proof of Funds | ✅ Required | ✅ Required (28 days) | ✅ Required | ✅ Required |
+| English Proficiency | ✅ IELTS/TOEFL/Duolingo | ✅ IELTS/PTE | ✅ IELTS/PTE/TOEFL | ✅ IELTS/PTE |
+| Medical / Insurance | ✅ Medical + Health Insurance | ✅ TB Test + IHS | ✅ Medical Exam | ✅ OSHC |
+| Visa Interview | ✅ Mandatory | ❌ Optional | ❌ Optional | ❌ Optional |
+| Biometric Required | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+
+💰 **Financial Requirements (2025 Estimates)**
+
+| Country | Minimum Living Cost Proof | Tuition Proof | Total Estimated Fund Required |
+|---------|---------------------------|---------------|------------------------------|
+| 🇺🇸 USA | Around USD $10,000–$12,000/year | 1 year tuition | USD $30,000+ |
+| 🇬🇧 UK | £1,023–£1,334/month (9 months) | 1 year tuition | £20,000–£25,000+ |
+| 🇨🇦 Canada | CAD $20,635/year | 1 year tuition | CAD $30,000+ |
+| 🇦🇺 Australia | AUD $24,505/year | 1 year tuition | AUD $35,000+ |
+
+🗣 **Visa Interview and Success Tips**
+
+| Country | Interview Required | Tips |
+|---------|-------------------|------|
+| 🇺🇸 USA | ✅ Yes | Be confident, clear about course and sponsor, know your university well |
+| 🇬🇧 UK | ⚠️ Sometimes | Prepare a short video or online interview if requested |
+| 🇨🇦 Canada | ❌ No (usually) | Focus on financial transparency and SOP quality |
+| 🇦🇺 Australia | ❌ No | Ensure GTE (Genuine Temporary Entrant) statement is strong |
+
+🕒 **Processing Time and Difficulty Level**
+
+| Country | Average Time | Difficulty Level |
+|---------|--------------|------------------|
+| 🇺🇸 USA | 3–6 weeks | Medium (due to interview) |
+| 🇬🇧 UK | 3–6 weeks | Easy |
+| 🇨🇦 Canada | 4–8 weeks | Medium |
+| 🇦🇺 Australia | 4–6 weeks | Easy |
+
+🎯 **Post-Study Work Opportunities**
+
+| Country | Work Visa After Study | Duration | Name of Visa |
+|---------|----------------------|----------|--------------|
+| 🇺🇸 USA | OPT (Optional Practical Training) | 1–3 years | OPT / STEM OPT |
+| 🇬🇧 UK | Graduate Route | 2 years (3 for PhD) | Graduate Visa |
+| 🇨🇦 Canada | Post-Graduation Work Permit (PGWP) | 1–3 years | PGWP |
+| 🇦🇺 Australia | Temporary Graduate Visa | 2–4 years | Subclass 485 |
+
+🧭 **Which Country Is Best for You?**
+
+• **🇺🇸 USA**: Best for world-class research, innovation, and technology programs.
+• **🇬🇧 UK**: Best for fast-track master's degrees and global exposure.
+• **🇨🇦 Canada**: Best for PR opportunities and affordable living.
+• **🇦🇺 Australia**: Best for lifestyle, weather, and post-study work balance.
+
+✅ **Final Tips Before Applying**
+
+• Start your visa process at least 3–4 months before your course begins.
+• Prepare your financial documents carefully — many refusals happen due to insufficient proof.
+• Write a strong SOP or GTE statement showing your genuine intent to study.
+• Keep both digital and printed copies of all your documents.
+• Always apply through a trusted education consultancy to avoid errors.
+
+🌍 **Final Thoughts**
+
+Each of these countries offers world-class education and global career exposure — but your choice should depend on your academic goals, financial plan, and lifestyle preferences.
+Whether it's the innovation-driven USA, career-focused UK, opportunity-rich Canada, or vibrant Australia — all can lead you toward a successful global future.
+
+With expert guidance from your education consultancy, your study abroad dream in 2025 can turn into a life-changing reality.`,
+      author: 'Dr. Michael Thompson',
+      authorImage: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150',
+      date: '2025-10-06',
+      readTime: '22 min read',
+      category: 'Study Abroad',
+      tags: ['Comparison', 'USA', 'UK', 'Canada', 'Australia', 'Visa Guide'],
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800',
+      views: '5.7K',
+      likes: 423,
+      comments: '134',
+      featured: true,
+      difficulty: 'Beginner',
+      rating: 4.9,
+      downloadCount: '3.1K',
+      trending: true,
+      isNew: true
+    },
+    {
+      id: 12,
+      title: 'USA Student Visa Process 2025 — Step-by-Step Guide for International Students',
+      excerpt: 'Complete guide to US student visa (F-1) process with I-20 requirements, SEVIS fee, DS-160 form, and visa interview preparation for 2025.',
+      content: `The United States has long been one of the most popular study destinations in the world, home to Ivy League universities, world-class research, and diverse career opportunities.
+If you're planning to study in the USA, understanding the student visa process is one of the most crucial steps before your journey begins.
+
+This detailed 2025 guide will help you understand how to apply for a US student visa, what documents you'll need, and how to succeed in your visa interview.
+
+🎓 **Step 1: Get Accepted by a SEVP-Approved Institution**
+
+To study in the US, you must first be accepted by a SEVP (Student and Exchange Visitor Program)-approved school, college, or university.
+Once you are accepted, the institution will issue an I-20 form — a crucial document required for your visa application.
+
+**Documents for admission:**
+• Academic transcripts and certificates
+• English proficiency (IELTS, TOEFL, or Duolingo)
+• Statement of Purpose (SOP)
+• Passport copy
+• Application and registration fees
+
+💵 **Step 2: Pay the SEVIS Fee (Form I-901)**
+
+Before applying for your visa, you must pay the SEVIS (Student and Exchange Visitor Information System) fee online.
+This fee is required to activate your student record in the SEVIS database.
+
+**Fee (as of 2025):**
+• F-1 visa: USD $350
+• J-1 visa: USD $220
+
+After payment, print and keep the I-901 SEVIS payment confirmation — it will be required during your visa interview.
+
+💻 **Step 3: Complete the DS-160 Form Online**
+
+Next, fill out the DS-160 form, which is the official Online Nonimmigrant Visa Application.
+You can find it on the U.S. Department of State website.
+
+**You'll need:**
+• Your I-20 form
+• SEVIS payment receipt
+• Passport information
+• Recent digital photo (per US specifications)
+
+After completing the form, save the DS-160 confirmation page with the barcode — you'll need it for your visa appointment.
+
+🗓 **Step 4: Schedule Visa Appointments (OFC + Interview)**
+
+You'll have to schedule two separate appointments:
+• **OFC (Offsite Facilitation Center)** – for biometrics (photo and fingerprints)
+• **US Embassy/Consulate** – for your visa interview
+
+**To book appointments:**
+• Visit the official US Visa Information and Appointment website for your country.
+• Pay the visa application fee (around USD $185 for F-1 visas).
+
+🗣 **Step 5: Attend the Visa Interview**
+
+The visa interview is the most important step in your USA student visa process.
+It determines whether you are a genuine student and if you meet all visa requirements.
+
+**Documents to carry for interview:**
+• Valid passport
+• I-20 form
+• DS-160 confirmation page
+• Visa fee and SEVIS fee receipts
+• Admission letter from university
+• Academic transcripts and certificates
+• Bank statements / financial proofs
+• SOP or study plan
+
+**Common interview questions:**
+• Why did you choose this university?
+• Who is sponsoring your education?
+• What are your career plans after graduation?
+• How will you finance your studies?
+
+**Tips:**
+• Be confident and honest.
+• Keep answers short, clear, and focused.
+• Dress neatly and maintain eye contact.
+
+⏳ **Step 6: Wait for Visa Decision**
+
+After the interview, the visa officer will inform you about the decision.
+If approved, your passport will be kept for visa stamping and returned within 3–7 working days.
+Your visa type will be F-1, M-1, or J-1, depending on your course.
+
+✈️ **Step 7: Prepare for Travel to the USA**
+
+Congratulations! You can now prepare for your flight.
+Remember, you can enter the U.S. up to 30 days before your course start date.
+
+**Before departure checklist:**
+• Carry passport with visa and I-20 form
+• Keep SEVIS and admission receipts
+• Book airport pickup and housing
+• Attend pre-departure orientation
+
+Upon arrival, show your I-20 form and passport to the CBP (Customs and Border Protection) officer at the airport.
+
+📋 **Summary: USA Student Visa Requirements 2025**
+
+| Category | Documents Required |
+|----------|-------------------|
+| Admission | I-20 Form, Offer Letter, Passport |
+| Financial | Bank Statement, Sponsor Letter, Loan Letter |
+| English | IELTS, TOEFL, or Duolingo |
+| Forms | DS-160, SEVIS (I-901) Receipt |
+| Others | Visa Fee Receipt, Photos, SOP, Academic Documents |
+
+🌍 **Final Thoughts**
+
+The USA Student Visa Process (2025) can seem complex, but with proper preparation and guidance, it becomes manageable and rewarding.
+Start early, gather all documents carefully, and practice for your interview confidently.
+With expert support from your trusted education consultancy, your dream to study in the USA is one step away from reality!`,
+      author: 'Prof. Lisa Anderson',
+      authorImage: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150',
+      date: '2025-10-06',
+      readTime: '19 min read',
+      category: 'Visa Guide',
+      tags: ['USA', 'F-1 Visa', 'I-20', 'SEVIS', 'DS-160'],
+      image: 'https://images.unsplash.com/photo-1569098644584-210bcd375b59?w=800',
+      views: '4.1K',
+      likes: 312,
+      comments: '89',
+      featured: true,
+      difficulty: 'Advanced',
+      rating: 4.9,
+      downloadCount: '2.3K',
+      trending: true,
+      isNew: true
+    },
+    {
+      id: 11,
+      title: 'UK Student Visa Process 2025 — Step-by-Step Guide for International Students',
+      excerpt: 'Complete guide to UK Student Visa (Tier 4) process with CAS requirements, financial proof, and step-by-step application instructions for 2025.',
+      content: `The United Kingdom continues to attract thousands of international students each year, offering world-class education, globally recognized degrees, and valuable post-study work opportunities.
+If you're planning to study in the UK in 2025, understanding the student visa process is essential for a smooth journey from your home country to your university campus.
+
+Here's a complete, updated guide on the UK Student Visa (Tier 4) process — step-by-step.
+
+🎓 **Step 1: Receive Your CAS (Confirmation of Acceptance for Studies)**
+
+Before you can apply for a UK student visa, you need to receive a CAS letter from your university or college.
+This letter confirms that you have been officially accepted into a course of study.
+
+**Documents required to receive CAS:**
+• Academic transcripts and certificates
+• Passport copy
+• English proficiency (IELTS/TOEFL/PTE/DUOLINGO)
+• Tuition deposit payment receipt
+
+Once issued, your CAS number will be needed during the visa application.
+
+💻 **Step 2: Apply Online for UK Student Visa**
+
+All UK visa applications are done online via the official Gov.UK website.
+You can apply up to 6 months before your course starts.
+
+**You'll need:**
+• CAS number
+• Passport
+• Financial proof
+• English test result
+• ATAS certificate (for some courses)
+
+After completing the form, you'll book an appointment for biometrics and document submission at your nearest VFS Global center.
+
+💰 **Step 3: Prepare Financial Documents**
+
+You must show that you have enough funds to pay for your course fees and living expenses.
+
+**As of 2025:**
+• For courses outside London: £1,023 per month for up to 9 months
+• For courses in London: £1,334 per month for up to 9 months
+• Plus, tuition fees for the first year
+
+**Accepted financial proofs:**
+• Bank statements (for at least 28 consecutive days)
+• Education loan letter
+• Sponsor letter (if applicable)
+• Scholarship award letter
+
+🩺 **Step 4: Pay the IHS Fee and Book Biometrics**
+
+Before submitting your visa application, you must pay the Immigration Health Surcharge (IHS) fee, which allows you to access the UK's National Health Service (NHS) during your stay.
+
+**IHS Fee (2025):**
+• Around £776 per year for students
+
+Then, book a biometric appointment at the VFS center to provide fingerprints and a photo.
+
+🧾 **Step 5: Submit Required Documents**
+
+At your VFS appointment, you'll need to submit all original documents and biometric data.
+
+**Required documents:**
+• Valid passport
+• CAS letter
+• Financial proof
+• IHS payment receipt
+• Visa application form
+• English test result
+• TB test certificate (if required)
+• Passport-size photos
+
+🕒 **Step 6: Wait for Visa Processing**
+
+Visa processing time is usually 3 to 6 weeks.
+You'll receive an email or SMS once your decision is ready.
+If approved, you'll receive your Entry Clearance Visa (Vignette) in your passport.
+
+🛬 **Step 7: Prepare for Travel and Arrival in the UK**
+
+You can travel to the UK up to 1 month before your course starts.
+Upon arrival, you'll collect your Biometric Residence Permit (BRP) within 10 days at the location mentioned in your visa decision letter.
+
+**Before departure checklist:**
+• Print CAS, visa letter, and BRP collection address
+• Pack original academic and financial documents
+• Carry passport and vaccination certificates
+• Join pre-departure session from your consultancy
+
+📋 **Summary: UK Student Visa Requirements 2025**
+
+| Category | Documents Required |
+|----------|-------------------|
+| Admission | CAS, Passport, Offer Letter |
+| Financial | Bank Statement, Loan Letter, Sponsor Letter |
+| Health | IHS Fee Receipt, TB Certificate |
+| English | IELTS, PTE, TOEFL, or DUOLINGO |
+| Other | Visa Application Form, Photos, SOP |
+
+🌍 **Final Thoughts**
+
+The UK Student Visa Process (2025) is one of the most straightforward — if you prepare early and follow the correct steps.
+Ensure your financial documents meet the 28-day rule, keep your CAS details accurate, and be ready for any verification.
+With expert guidance from your education consultancy, your dream of studying in the UK is just a few steps away.`,
+      author: 'Dr. James Wilson',
+      authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+      date: '2025-10-06',
+      readTime: '16 min read',
+      category: 'Visa Guide',
+      tags: ['UK', 'Student Visa', 'CAS', 'Tier 4', 'IHS'],
+      image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800',
+      views: '2.8K',
+      likes: 189,
+      comments: '67',
+      featured: false,
+      difficulty: 'Intermediate',
+      rating: 4.8,
+      downloadCount: '1.4K',
+      trending: true,
+      isNew: true
+    },
+    {
       id: 2,
+      title: 'Australia Student Visa Process 2025 — Step-by-Step Guide for International Students',
+      excerpt: 'Complete guide to Australian student visa (subclass 500) process with step-by-step instructions, CoE requirements, and financial capacity guidelines for 2025.',
+      content: `Australia remains one of the most popular destinations for higher education, thanks to its world-class universities, post-study work rights, and quality of life.
+If you're planning to study in Australia, this guide will walk you through each step of the visa process, required documents, and tips to ensure a smooth application.
+
+🎓 **Step 1: Apply to an Australian Institution and Receive CoE**
+
+Before applying for a visa, you must first receive a Confirmation of Enrolment (CoE) from a registered Australian education provider.
+This proves that you have been officially accepted into a full-time course.
+
+**Documents required to apply for admission:**
+• Academic transcripts
+• Passport copy
+• English test (IELTS, PTE, TOEFL)
+• Application form and registration fee
+
+Once your offer is accepted and tuition deposit paid, your institution will issue your CoE.
+
+💻 **Step 2: Create an ImmiAccount and Start Visa Application**
+
+All student visa applications for Australia are submitted online through the official Department of Home Affairs website.
+Create your ImmiAccount and select Student Visa (subclass 500).
+
+**You'll need:**
+• CoE number
+• Passport details
+• OSHC (Overseas Student Health Cover) information
+• Proof of financial capacity
+• SOP or GTE statement (Genuine Temporary Entrant)
+
+💰 **Step 3: Show Proof of Financial Capacity**
+
+The Australian Government requires proof that you can cover your tuition and living costs while studying.
+As of 2025, you must demonstrate access to at least AUD $24,505 per year for living expenses, plus tuition and travel costs.
+
+**Accepted financial proofs:**
+• Bank statements
+• Income documents of sponsors
+• Education loan approval letters
+• Scholarship award letters
+
+🩺 **Step 4: Complete Health Examination and Get OSHC**
+
+Before your visa is approved, you must complete a medical examination by a panel doctor approved by the Australian embassy.
+You also need to purchase Overseas Student Health Cover (OSHC) for the duration of your course.
+
+**Pro tip:** Most universities can help arrange OSHC through providers like BUPA, Medibank, or Allianz Care.
+
+📝 **Step 5: Prepare and Upload Visa Documents**
+
+Upload all required documents in your ImmiAccount. Make sure all files are clear, translated into English (if necessary), and up to date.
+
+**Documents checklist:**
+• Valid passport
+• CoE
+• English test result
+• OSHC certificate
+• Financial documents
+• GTE statement
+• Academic documents
+• Birth certificate or National ID (if applicable)
+
+🎙 **Step 6: Submit Visa Application and Pay Fee**
+
+Once all documents are ready, submit your application and pay the visa application fee (currently around AUD $710).
+Keep your Transaction Reference Number (TRN) safe for tracking your application.
+
+💬 **Step 7: Attend Interview or Biometrics (if required)**
+
+In some cases, students may be asked to provide biometric information or attend an interview at the Australian Visa Application Centre (VFS).
+Be honest, confident, and clearly explain your study intentions.
+
+⏳ **Step 8: Wait for Visa Decision**
+
+Visa processing time usually takes between 3 to 6 weeks, depending on your application completeness and time of year.
+You can track your visa status using your ImmiAccount or TRN.
+
+Once approved, you'll receive your Visa Grant Letter via email.
+
+🧳 **Step 9: Prepare for Travel and Arrival in Australia**
+
+Congratulations! You can now plan your journey.
+Check the entry requirements, pack your documents, and prepare for your new life in Australia.
+
+**Before departure checklist:**
+• Print visa grant letter
+• Carry original documents
+• Book airport pickup and accommodation
+• Attend your consultancy's pre-departure session
+
+📋 **Summary: Required Documents for Australia Student Visa 2025**
+
+| Category | Documents Required |
+|----------|-------------------|
+| Admission | CoE, Offer Letter, Passport |
+| Financial | Bank Statement, Loan Letter, Sponsor Proof |
+| English | IELTS/PTE/TOEFL |
+| Health | OSHC, Medical Certificate |
+| Other | GTE Statement, SOP, Visa Fee Receipt |
+
+🌏 **Final Thoughts**
+
+Getting your Australian student visa can be easy — if you prepare early, stay organized, and submit genuine documents.
+With the right guidance from your trusted education consultancy, your dream to study in Australia can come true smoothly and confidently.`,
+      author: 'Australia Visa Specialists',
+      authorImage: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=150',
+      authorBio: 'Certified Australian immigration advisors specializing in student visa applications',
+      date: '2024-10-06',
+      readTime: '12 min read',
+      category: 'Visa Guide',
+      tags: ['Australia', 'Student Visa', 'Subclass 500', 'CoE', 'OSHC', '2025 Guide'],
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
+      views: '22.1K',
+      likes: '1.5K',
+      comments: '298',
+      featured: true,
+      difficulty: 'Beginner',
+      rating: 4.8,
+      downloadCount: '2.8K',
+      trending: true,
+      isNew: true
+    },
+    {
+      id: 10,
+      title: 'Canada Student Visa Process 2025 — Complete Step-by-Step Guide',
+      excerpt: 'Complete guide to Canada Study Permit process with DLI requirements, financial proof, and step-by-step application instructions for 2025.',
+      content: `Canada is one of the top destinations for international students because of its world-class education, affordable tuition fees, and welcoming culture.
+If you plan to study in Canada, understanding the student visa (study permit) process is the key to a successful application.
+Here's a complete 2025 guide covering all steps, requirements, and expert tips.
+
+🎯 **Step 1: Choose a Designated Learning Institution (DLI)**
+
+Before applying for a student visa, make sure you've been accepted by a Designated Learning Institution (DLI) — only DLIs are approved by the Canadian government to host international students.
+You can find the full DLI list on the official Government of Canada website.
+
+**Documents for admission:**
+• Academic transcripts and certificates
+• English proficiency (IELTS/TOEFL/PTE)
+• Valid passport
+• Application and registration fees
+
+Once accepted, you'll receive a Letter of Acceptance (LOA) — required for your visa application.
+
+💻 **Step 2: Apply for Study Permit Online**
+
+You can apply for your Canada Study Permit through the IRCC (Immigration, Refugees, and Citizenship Canada) website.
+
+**You'll need:**
+• Letter of Acceptance (LOA)
+• Valid passport
+• Recent photos
+• Proof of financial support
+• Statement of Purpose (SOP)
+• Visa fee payment receipt
+
+Make sure all documents are scanned clearly and translated into English or French (if necessary).
+
+💰 **Step 3: Show Proof of Financial Support**
+
+To qualify, you must prove you can pay for your tuition and living expenses during your study period.
+
+**Minimum funds required (as of 2025):**
+• Tuition fees for one year
+• Living expenses: CAD $20,635 per year (outside Quebec)
+• Travel and accommodation costs
+
+**Accepted proofs:**
+• Bank statement (past 4 months)
+• Income certificate or tax documents
+• Education loan letter
+• Sponsor letter (if applicable)
+
+🩺 **Step 4: Complete Medical Examination and Biometrics**
+
+After applying, IRCC will send instructions to complete a medical examination with an approved panel physician.
+You'll also receive a request for biometrics (fingerprints and photo), which must be done at a VFS Global center.
+
+**Important:** Your application will not be processed until both are completed.
+
+📄 **Step 5: Upload Documents and Submit Application**
+
+When all requirements are ready, submit your complete application online and pay the visa fee (around CAD $150 plus biometrics fee).
+
+**Document checklist:**
+• Passport
+• LOA
+• Financial documents
+• Photos
+• SOP
+• Medical and biometrics receipts
+
+⏳ **Step 6: Wait for Visa Decision**
+
+After submission, you can track your visa status through your IRCC account.
+Processing time usually takes 4–8 weeks, depending on your country and season.
+
+**If approved, you'll receive:**
+• Port of Entry (POE) Letter of Introduction, and
+• Study Permit Approval (to be issued at the airport upon arrival in Canada).
+
+✈️ **Step 7: Prepare for Travel to Canada**
+
+Once you've received your approval, it's time to prepare for your journey!
+
+**Pre-departure checklist:**
+• Carry your passport and POE letter
+• Have your tuition fee and accommodation details ready
+• Keep copies of all documents (digital + printed)
+• Attend your consultancy's pre-departure session
+
+At the airport, a border services officer will issue your Study Permit after verifying your documents.
+
+📋 **Summary: Canada Student Visa Requirements 2025**
+
+| Category | Documents Required |
+|----------|-------------------|
+| Admission | Letter of Acceptance (LOA), Passport |
+| Financial | Bank Statement, Loan Letter, Sponsor Letter |
+| Health | Medical Certificate, Biometrics |
+| English | IELTS/TOEFL/PTE |
+| Other | SOP, Photos, Visa Fee Receipt |
+
+🌍 **Final Thoughts**
+
+The Canada Student Visa Process might seem lengthy, but with proper guidance and preparation, you can complete it smoothly.
+Start your application early, maintain financial transparency, and ensure all documents are genuine.
+With the support of your trusted education consultancy, your dream of studying in Canada can become reality in 2025!`,
+      author: 'Sarah Johnson',
+      authorImage: 'https://images.unsplash.com/photo-1494790108755-2616b612b188?w=150',
+      date: '2025-10-06',
+      readTime: '18 min read',
+      category: 'Visa Guide',
+      tags: ['Canada', 'Study Permit', 'DLI', 'IRCC', 'Student Visa'],
+      views: '3.2K',
+      likes: 247,
+      rating: 4.9,
+      downloadCount: '1.9K',
+      trending: true,
+      isNew: true,
+      difficulty: 'Intermediate'
+    },
+    {
+      id: 3,
+      title: 'Step-by-Step Guide to Student Visa Processing (2025 Updated)',
+      excerpt: 'Complete guide to student visa processing with step-by-step instructions, requirements, and tips for a successful application in 2025.',
+      content: `Studying abroad is a dream for many students — but the visa process can often feel confusing and stressful. This complete guide will walk you through every step of student visa processing and explain the essential requirements you'll need to fulfill before traveling to your dream destination.
+
+✈️ **Step 1: Choose Your Destination and Course**
+
+Before applying for a student visa, you must decide which country and course you want to study.
+Each country has different visa rules, so always check the official immigration or embassy website.
+Make sure your selected course and institution are recognized and accredited by that country's education authority.
+
+**Tips:**
+• Research tuition fees and living costs.
+• Check post-study work opportunities.
+• Consult with your education consultant for eligibility criteria.
+
+📝 **Step 2: Receive the Offer Letter**
+
+Once you apply to a university or college and get accepted, you will receive an Offer Letter or Confirmation of Enrolment (CoE).
+This document is mandatory for the visa application.
+
+**You'll need:**
+• Academic transcripts and certificates
+• Valid passport
+• Proof of English proficiency (IELTS, TOEFL, or PTE)
+• Application fee payment
+
+💰 **Step 3: Arrange Financial Documents**
+
+Embassies want to ensure you can cover your tuition and living expenses during your studies.
+You must show proof of sufficient funds — either through bank statements, sponsor letters, or scholarships.
+
+**Financial documents may include:**
+• Recent bank statement (last 3–6 months)
+• Income certificate of sponsor
+• Affidavit of support
+• Loan approval letter (if applicable)
+
+🩺 **Step 4: Medical and Health Insurance**
+
+Most countries require a medical examination and health insurance coverage before granting a student visa.
+
+**Common requirements:**
+• Medical test at an embassy-approved hospital
+• Health insurance for the entire duration of your stay
+• Immunization records (for certain destinations)
+
+📄 **Step 5: Prepare and Submit Visa Documents**
+
+After you've gathered all required documents, it's time to submit your visa application either online or via the embassy/VFS center.
+
+**Essential visa documents:**
+• Valid passport
+• Offer Letter / CAS / CoE
+• Financial documents
+• Medical report
+• Visa application form
+• Passport-size photos
+• Statement of Purpose (SOP)
+• Visa fee payment receipt
+
+👩‍💼 **Step 6: Attend the Interview (if required)**
+
+Some embassies conduct interviews to assess your study plans, financial capacity, and genuine intent to study.
+
+**Tips for your interview:**
+• Be confident and honest.
+• Clearly explain why you chose your course and university.
+• Bring all your original documents.
+
+🕒 **Step 7: Wait for Visa Decision**
+
+After submitting your application, you'll receive a tracking ID to check your visa status.
+Processing times vary depending on the country and season — it may take 2 to 6 weeks.
+
+✅ **Step 8: Receive Your Visa and Prepare for Departure**
+
+Once approved, you'll receive your student visa stamped on your passport.
+Now you can book your flight, pack your bags, and attend a pre-departure briefing organized by your consultancy.
+
+**Before you fly:**
+• Make digital copies of all documents.
+• Carry your admission letter and visa approval.
+• Keep emergency contacts handy.
+
+📋 **Summary of Student Visa Requirements**
+
+| Category | Documents Required |
+|----------|-------------------|
+| Academic | Offer Letter, Transcripts, English Test |
+| Financial | Bank Statement, Sponsor Letter, Affidavit |
+| Identity | Valid Passport, Photos |
+| Health | Medical Report, Insurance |
+| Others | SOP, Visa Form, Fee Receipt |
+
+🌍 **Final Thoughts**
+
+Applying for a student visa may seem complicated, but with the right guidance and preparation, the process becomes smooth and stress-free.
+Always start early, prepare your documents properly, and consult your trusted education consultancy for professional support.`,
+      author: 'Visa Expert Team',
+      authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+      authorBio: 'Expert visa consultants with 10+ years of experience in student visa processing',
+      date: '2024-10-06',
+      readTime: '15 min read',
+      category: 'Visa Guide',
+      tags: ['Visa', 'Student Visa', '2025 Guide', 'Documentation', 'Process'],
+      image: 'https://images.unsplash.com/photo-1554734867-bf3c00a49371?w=800',
+      views: '25.3K',
+      likes: '1.8K',
+      comments: '342',
+      featured: true,
+      difficulty: 'Beginner',
+      rating: 4.9,
+      downloadCount: '3.2K',
+      trending: true,
+      isNew: true
+    },
+    {
+      id: 4,
       title: 'Top 10 Universities in UK for International Students 2024',
       excerpt: 'Explore the best UK universities offering exceptional programs for international students, including admission requirements and scholarship opportunities.',
       author: 'Prof. Michael Chen',
@@ -96,7 +839,7 @@ export default function BlogPage() {
       trending: true
     },
     {
-      id: 3,
+      id: 5,
       title: 'How to Write a Winning Statement of Purpose (SOP)',
       excerpt: 'Master the art of writing compelling SOPs that get you admitted to your dream university with these proven strategies and examples.',
       author: 'Emma Rodriguez',
@@ -115,7 +858,7 @@ export default function BlogPage() {
       trending: true
     },
     {
-      id: 4,
+      id: 6,
       title: 'Scholarship Opportunities for Indian Students in 2024',
       excerpt: 'Comprehensive list of scholarships available for Indian students planning to study abroad, including eligibility and application process.',
       author: 'Raj Patel',
@@ -133,7 +876,7 @@ export default function BlogPage() {
       rating: 4.9
     },
     {
-      id: 5,
+      id: 7,
       title: 'Student Visa Interview: Common Questions & Best Answers',
       excerpt: 'Prepare for your student visa interview with these commonly asked questions and expert-approved answers that increase your approval chances.',
       author: 'Lisa Thompson',
@@ -151,7 +894,7 @@ export default function BlogPage() {
       rating: 4.6
     },
     {
-      id: 6,
+      id: 8,
       title: 'IELTS vs TOEFL: Which Test Should You Take?',
       excerpt: 'Complete comparison of IELTS and TOEFL exams to help you choose the right English proficiency test for your study abroad goals.',
       author: 'David Kumar',
@@ -169,7 +912,7 @@ export default function BlogPage() {
       rating: 4.5
     },
     {
-      id: 7,
+      id: 9,
       title: 'Cost of Living Guide: USA vs Canada vs UK vs Australia',
       excerpt: 'Detailed breakdown of living expenses in top study destinations to help you budget effectively for your international education.',
       author: 'Sophie Williams',
@@ -230,6 +973,19 @@ export default function BlogPage() {
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesCategory && matchesTag && matchesSearch
   })
+
+  // Pagination logic
+  const displayedPosts = showAllPosts ? filteredPosts : filteredPosts.slice(0, postsToShow)
+  const hasMorePosts = filteredPosts.length > postsToShow
+
+  const handleShowMore = () => {
+    if (showAllPosts) {
+      setShowAllPosts(false)
+      setPostsToShow(6)
+    } else {
+      setShowAllPosts(true)
+    }
+  }
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -569,7 +1325,7 @@ export default function BlogPage() {
               <div className="lg:col-span-3">
                 <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-6 md:mb-8">Latest Study Abroad Articles & Guides</h2>
                 <div className="grid gap-6 md:gap-8 sm:grid-cols-1 md:grid-cols-2">
-                  {filteredPosts.map((post, index) => (
+                  {displayedPosts.map((post, index) => (
                     <motion.div
                       key={post.id}
                       className="group relative overflow-hidden rounded-3xl bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/50"
@@ -660,6 +1416,37 @@ export default function BlogPage() {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* See More Button */}
+                {(hasMorePosts || showAllPosts) && (
+                  <div className="flex justify-center mt-8 md:mt-12">
+                    <motion.button
+                      onClick={handleShowMore}
+                      className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="relative z-10">
+                        {showAllPosts ? 'Show Less' : `See More Posts (${filteredPosts.length - postsToShow} more)`}
+                      </span>
+                      <motion.div 
+                        className="relative z-10"
+                        animate={{ rotate: showAllPosts ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </motion.div>
+                      
+                      {/* Animated background */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      {/* Sparkle effect */}
+                      <div className="absolute inset-0 rounded-full overflow-hidden">
+                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                      </div>
+                    </motion.button>
+                  </div>
+                )}
               </div>
 
               {/* Sidebar */}

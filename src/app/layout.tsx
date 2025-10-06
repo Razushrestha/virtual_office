@@ -5,6 +5,7 @@ import { Footer } from '../components/layout/Footer'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { ThemeProvider } from '../components/providers/ThemeProvider'
 import { ThemeToggle } from '../components/ui/ThemeToggle'
+import { WhatsAppButton } from '../components/ui/WhatsAppButton'
 
 export const metadata = {
 	title: 'Education Consultancy Nepal | Study Abroad Consultancy Kathmandu | Virtual Office',
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 						<div className="fixed right-4 bottom-4 z-40">
 							<ThemeToggle />
 						</div>
+						<WhatsAppButton />
 						<main className="flex-1">{children}</main>
 						<Footer />
 					</div>

@@ -74,9 +74,34 @@ export const Hero: React.FC = () => {
           </p>
           <div className="mt-6">
             <label className="mb-2 block text-xs font-medium text-gray-600" htmlFor="hero-search">Where do you want to study?</label>
-            <div className="flex w-full overflow-hidden rounded-lg border border-gray-300 bg-white shadow-soft-lg focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-200">
-              <input id="hero-search" className="flex-1 bg-transparent px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 outline-none" placeholder="e.g. Canada, UK, Australia" />
-              <Button type="button" variant="primary" size="md" className="rounded-none">Search</Button>
+            <div className="flex w-full overflow-hidden rounded-xl border border-gray-300 bg-white shadow-lg hover:shadow-xl transition-all duration-300 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-200 focus-within:shadow-xl">
+              <input 
+                id="hero-search" 
+                className="flex-1 bg-transparent px-6 py-4 text-sm text-gray-800 placeholder:text-gray-400 outline-none" 
+                placeholder="e.g. Canada, UK, Australia" 
+              />
+              <button 
+                type="button" 
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-white font-bold text-sm transition-all duration-300 hover:from-blue-700 hover:via-violet-700 hover:to-purple-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 active:scale-95"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  Search
+                </span>
+                
+                {/* Animated background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Sparkle effect */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 via-violet-400/20 to-purple-400/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                </div>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700"></div>
+              </button>
             </div>
           </div>
           <div className="mt-8 flex flex-wrap gap-4">

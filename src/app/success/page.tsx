@@ -28,6 +28,8 @@ export default function SuccessPage() {
   const [selectedCountry, setSelectedCountry] = useState('All')
   const [selectedProgram, setSelectedProgram] = useState('All')
   const [searchTerm, setSearchTerm] = useState('')
+  const [showAllStories, setShowAllStories] = useState(false)
+  const [storiesToShow, setStoriesToShow] = useState(8) // Initially show 8 stories
 
   const successStories = [
     {
@@ -174,6 +176,366 @@ export default function SuccessPage() {
         before: 'Dream seemed unreachable',
         after: 'Stanford with full funding'
       }
+    },
+    {
+      id: 7,
+      name: 'Elena Rossi',
+      story: 'Obtained student visa for PhD in Biomedical Engineering at University of Melbourne with full scholarship.',
+      fullStory: 'As an international student from Italy, I was concerned about the visa process and funding. Virtual Office guided me through every step, from university selection to visa application. The full scholarship made my PhD dreams affordable!',
+      country: 'Australia',
+      program: 'Biomedical Engineering',
+      degree: 'PhD',
+      university: 'University of Melbourne',
+      scholarship: 'Full Scholarship',
+      year: '2024',
+      duration: '4 years',
+      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400',
+      flag: '🇦🇺',
+      gradient: 'from-yellow-400 to-orange-600',
+      bgGradient: 'from-yellow-50 to-orange-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['PhD Admission', 'Full Scholarship', 'Visa Success'],
+      beforeAfter: {
+        before: 'Visa and funding concerns',
+        after: 'Melbourne PhD with full funding'
+      }
+    },
+    {
+      id: 8,
+      name: 'James Kim',
+      story: 'Approved for Masters in Business Analytics at University of British Columbia with merit award.',
+      fullStory: 'After working in tech for 3 years, I wanted to transition to data analytics. Virtual Office helped me position my experience perfectly and find programs that valued my background. UBC was the perfect choice!',
+      country: 'Canada',
+      program: 'Business Analytics',
+      degree: 'Masters',
+      university: 'University of British Columbia',
+      scholarship: '$20,000',
+      year: '2024',
+      duration: '16 months',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
+      flag: '🇨🇦',
+      gradient: 'from-green-400 to-emerald-600',
+      bgGradient: 'from-green-50 to-emerald-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['Career Transition', 'Merit Award', 'Perfect Match'],
+      beforeAfter: {
+        before: 'Career transition uncertainty',
+        after: 'UBC Analytics with scholarship'
+      }
+    },
+    {
+      id: 9,
+      name: 'Fatima Al-Zahra',
+      story: 'Received acceptance for Masters in International Relations at LSE with partial funding.',
+      fullStory: 'LSE was my dream school for international relations, but the competition was fierce. Virtual Office helped me craft a compelling personal statement that highlighted my unique perspective and experiences from the Middle East.',
+      country: 'UK',
+      program: 'International Relations',
+      degree: 'Masters',
+      university: 'London School of Economics',
+      scholarship: 'Partial Funding',
+      year: '2024',
+      duration: '1 year',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b1c5?w=400',
+      flag: '🇬🇧',
+      gradient: 'from-indigo-400 to-purple-600',
+      bgGradient: 'from-indigo-50 to-purple-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['LSE Admission', 'Partial Funding', 'Competitive Field'],
+      beforeAfter: {
+        before: 'Fierce competition concern',
+        after: 'LSE with funding support'
+      }
+    },
+    {
+      id: 10,
+      name: 'Oliver Thompson',
+      story: 'Got F-1 visa for Masters in Cybersecurity at Carnegie Mellon with research opportunity.',
+      fullStory: 'Cybersecurity was my passion, and Carnegie Mellon is the best in the field. Virtual Office helped me showcase my technical projects and connect with professors. The research opportunity will accelerate my career!',
+      country: 'USA',
+      program: 'Cybersecurity',
+      degree: 'Masters',
+      university: 'Carnegie Mellon University',
+      scholarship: 'Research Assistantship',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
+      flag: '🇺🇸',
+      gradient: 'from-red-400 to-pink-600',
+      bgGradient: 'from-red-50 to-pink-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['CMU Admission', 'Research Role', 'F-1 Visa'],
+      beforeAfter: {
+        before: 'Highly competitive field',
+        after: 'CMU Cybersecurity program'
+      }
+    },
+    {
+      id: 11,
+      name: 'Aisha Patel',
+      story: 'Secured admission to University of Sydney for Masters in Environmental Engineering with scholarship.',
+      fullStory: 'Environmental engineering combines my passion for sustainability with technical expertise. Virtual Office helped me find programs aligned with my values and secure funding to make it affordable.',
+      country: 'Australia',
+      program: 'Environmental Engineering',
+      degree: 'Masters',
+      university: 'University of Sydney',
+      scholarship: '$18,000',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400',
+      flag: '🇦🇺',
+      gradient: 'from-teal-400 to-cyan-600',
+      bgGradient: 'from-teal-50 to-cyan-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['Sydney Admission', 'Scholarship', 'Sustainability Focus'],
+      beforeAfter: {
+        before: 'Funding concerns',
+        after: 'Sydney with full support'
+      }
+    },
+    {
+      id: 12,
+      name: 'Lucas Mueller',
+      story: 'Approved for PhD in Physics at University of Waterloo with full funding and teaching position.',
+      fullStory: 'Physics PhD programs are extremely competitive, especially with funding. Virtual Office helped me identify professors whose research aligned with my interests and craft compelling research proposals.',
+      country: 'Canada',
+      program: 'Physics',
+      degree: 'PhD',
+      university: 'University of Waterloo',
+      scholarship: 'Full Funding + TA',
+      year: '2024',
+      duration: '5 years',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
+      flag: '🇨🇦',
+      gradient: 'from-violet-400 to-purple-600',
+      bgGradient: 'from-violet-50 to-purple-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['PhD Admission', 'Full Funding', 'Teaching Position'],
+      beforeAfter: {
+        before: 'Competitive funding landscape',
+        after: 'Waterloo PhD with full support'
+      }
+    },
+    {
+      id: 13,
+      name: 'Isabella Garcia',
+      story: 'Received acceptance for Masters in Public Health at Harvard with merit scholarship.',
+      fullStory: 'Harvard School of Public Health was my top choice for advancing my career in global health. Virtual Office helped me articulate my vision and demonstrate my commitment to making a difference.',
+      country: 'USA',
+      program: 'Public Health',
+      degree: 'Masters',
+      university: 'Harvard University',
+      scholarship: 'Merit Scholarship',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400',
+      flag: '🇺🇸',
+      gradient: 'from-pink-400 to-rose-600',
+      bgGradient: 'from-pink-50 to-rose-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['Harvard Admission', 'Merit Scholarship', 'Global Health'],
+      beforeAfter: {
+        before: 'Highly competitive program',
+        after: 'Harvard Public Health'
+      }
+    },
+    {
+      id: 14,
+      name: 'Mohammed Rahman',
+      story: 'Got student visa for Masters in Finance at University of Edinburgh with distinction scholarship.',
+      fullStory: 'Edinburgh Business School has an excellent reputation in finance. Virtual Office helped me highlight my quantitative skills and career aspirations, leading to both admission and a significant scholarship.',
+      country: 'UK',
+      program: 'Finance',
+      degree: 'Masters',
+      university: 'University of Edinburgh',
+      scholarship: 'Distinction Scholarship',
+      year: '2024',
+      duration: '1 year',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
+      flag: '🇬🇧',
+      gradient: 'from-amber-400 to-orange-600',
+      bgGradient: 'from-amber-50 to-orange-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['Edinburgh Admission', 'Distinction Award', 'Finance Focus'],
+      beforeAfter: {
+        before: 'Finance career uncertainty',
+        after: 'Edinburgh Finance with scholarship'
+      }
+    },
+    {
+      id: 15,
+      name: 'Sofia Andersson',
+      story: 'Approved for PhD in Renewable Energy at Australian National University with research grant.',
+      fullStory: 'Renewable energy research is my passion for addressing climate change. Virtual Office connected me with leading researchers and helped me secure a position at one of the world\'s top energy research centers.',
+      country: 'Australia',
+      program: 'Renewable Energy',
+      degree: 'PhD',
+      university: 'Australian National University',
+      scholarship: 'Research Grant',
+      year: '2024',
+      duration: '4 years',
+      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400',
+      flag: '🇦🇺',
+      gradient: 'from-emerald-400 to-green-600',
+      bgGradient: 'from-emerald-50 to-green-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['ANU Admission', 'Research Grant', 'Climate Impact'],
+      beforeAfter: {
+        before: 'Finding research opportunities',
+        after: 'ANU renewable energy research'
+      }
+    },
+    {
+      id: 16,
+      name: 'Chen Wei',
+      story: 'Secured F-1 visa for Masters in Machine Learning at University of California Berkeley.',
+      fullStory: 'Berkeley\'s machine learning program is world-renowned. Virtual Office helped me stand out among thousands of applicants by showcasing my unique projects and research experience.',
+      country: 'USA',
+      program: 'Machine Learning',
+      degree: 'Masters',
+      university: 'UC Berkeley',
+      scholarship: 'Merit Award',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
+      flag: '🇺🇸',
+      gradient: 'from-blue-400 to-indigo-600',
+      bgGradient: 'from-blue-50 to-indigo-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['Berkeley Admission', 'Merit Award', 'ML Specialization'],
+      beforeAfter: {
+        before: 'Thousands of applicants',
+        after: 'Berkeley ML program'
+      }
+    },
+    {
+      id: 17,
+      name: 'Amelia Johnson',
+      story: 'Received acceptance for Masters in Digital Marketing at University of Toronto with co-op program.',
+      fullStory: 'The co-op program at University of Toronto provides invaluable industry experience. Virtual Office helped me understand the program structure and prepare a compelling application highlighting my marketing passion.',
+      country: 'Canada',
+      program: 'Digital Marketing',
+      degree: 'Masters',
+      university: 'University of Toronto',
+      scholarship: 'Co-op Placement',
+      year: '2024',
+      duration: '20 months',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b1c5?w=400',
+      flag: '🇨🇦',
+      gradient: 'from-purple-400 to-pink-600',
+      bgGradient: 'from-purple-50 to-pink-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['UofT Admission', 'Co-op Program', 'Industry Experience'],
+      beforeAfter: {
+        before: 'Limited industry experience',
+        after: 'Toronto with co-op opportunity'
+      }
+    },
+    {
+      id: 18,
+      name: 'Dmitri Volkov',
+      story: 'Got student visa for Masters in Aerospace Engineering at Imperial College London with research funding.',
+      fullStory: 'Aerospace engineering at Imperial is cutting-edge. Virtual Office helped me connect with professors working on projects I\'m passionate about and secure research funding for my studies.',
+      country: 'UK',
+      program: 'Aerospace Engineering',
+      degree: 'Masters',
+      university: 'Imperial College London',
+      scholarship: 'Research Funding',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
+      flag: '🇬🇧',
+      gradient: 'from-slate-400 to-gray-600',
+      bgGradient: 'from-slate-50 to-gray-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['Imperial Admission', 'Research Funding', 'Aerospace Focus'],
+      beforeAfter: {
+        before: 'Research funding uncertainty',
+        after: 'Imperial with research support'
+      }
+    },
+    {
+      id: 19,
+      name: 'Maya Singh',
+      story: 'Approved for PhD in Neuroscience at University of Queensland with full scholarship and living allowance.',
+      fullStory: 'Neuroscience research requires significant funding and resources. Virtual Office helped me find the perfect supervisor match and secure comprehensive funding that covers everything from tuition to living expenses.',
+      country: 'Australia',
+      program: 'Neuroscience',
+      degree: 'PhD',
+      university: 'University of Queensland',
+      scholarship: 'Full Scholarship + Stipend',
+      year: '2024',
+      duration: '4 years',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400',
+      flag: '🇦🇺',
+      gradient: 'from-rose-400 to-pink-600',
+      bgGradient: 'from-rose-50 to-pink-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['UQ Admission', 'Full Funding', 'Living Allowance'],
+      beforeAfter: {
+        before: 'Funding and supervisor concerns',
+        after: 'Queensland PhD fully funded'
+      }
+    },
+    {
+      id: 20,
+      name: 'Kevin O\'Brien',
+      story: 'Secured F-1 visa for Masters in Game Development at University of Southern California with industry connections.',
+      fullStory: 'USC\'s game development program has incredible industry connections in Los Angeles. Virtual Office helped me showcase my creative portfolio and passion for gaming, leading to admission and valuable networking opportunities.',
+      country: 'USA',
+      program: 'Game Development',
+      degree: 'Masters',
+      university: 'University of Southern California',
+      scholarship: 'Industry Partnership',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
+      flag: '🇺🇸',
+      gradient: 'from-cyan-400 to-blue-600',
+      bgGradient: 'from-cyan-50 to-blue-50',
+      rating: 5,
+      hasVideo: false,
+      achievements: ['USC Admission', 'Industry Partnership', 'Creative Portfolio'],
+      beforeAfter: {
+        before: 'Portfolio presentation concerns',
+        after: 'USC Game Development program'
+      }
+    },
+    {
+      id: 21,
+      name: 'Zara Ahmed',
+      story: 'Received acceptance for Masters in Sustainable Architecture at University of Calgary with green building focus.',
+      fullStory: 'Sustainable architecture is the future of construction. Virtual Office helped me find a program that perfectly aligns with my environmental values and career goals in green building design.',
+      country: 'Canada',
+      program: 'Sustainable Architecture',
+      degree: 'Masters',
+      university: 'University of Calgary',
+      scholarship: 'Sustainability Award',
+      year: '2024',
+      duration: '2 years',
+      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400',
+      flag: '🇨🇦',
+      gradient: 'from-lime-400 to-green-600',
+      bgGradient: 'from-lime-50 to-green-50',
+      rating: 5,
+      hasVideo: true,
+      achievements: ['Calgary Admission', 'Sustainability Award', 'Green Focus'],
+      beforeAfter: {
+        before: 'Limited sustainable programs',
+        after: 'Calgary sustainable architecture'
+      }
     }
   ]
 
@@ -188,6 +550,19 @@ export default function SuccessPage() {
                          story.program.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesCountry && matchesProgram && matchesSearch
   })
+
+  // Pagination logic
+  const displayedStories = showAllStories ? filteredStories : filteredStories.slice(0, storiesToShow)
+  const hasMoreStories = filteredStories.length > storiesToShow
+
+  const handleShowMore = () => {
+    if (showAllStories) {
+      setShowAllStories(false)
+      setStoriesToShow(8)
+    } else {
+      setShowAllStories(true)
+    }
+  }
 
   const stats = [
     { icon: Users, label: 'Success Stories', value: '10,000+', color: 'from-blue-500 to-cyan-500' },
@@ -398,7 +773,7 @@ export default function SuccessPage() {
           <div className="mx-auto max-w-7xl">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 mb-6 md:mb-8 text-center">International Student Success Stories</h2>
             <div className="grid gap-6 md:gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {filteredStories.map((story, index) => (
+              {displayedStories.map((story, index) => (
                 <motion.div
                   key={story.id}
                   className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
@@ -501,44 +876,41 @@ export default function SuccessPage() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </motion.div>
 
-        {/* CTA Section */}
-        <motion.div 
-          className="py-16 md:py-20 px-4 md:px-6"
-          variants={fadeInUp}
-        >
-          <div className="mx-auto max-w-4xl">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl md:rounded-3xl blur-xl opacity-20"></div>
-              <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl md:rounded-3xl p-8 md:p-12 text-white text-center">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6">
-                  Ready to Write Your Success Story?
-                </h2>
-                <p className="text-blue-100 mb-6 md:mb-8 text-base md:text-xl leading-relaxed">
-                  Join thousands of students who achieved their study abroad dreams with our expert guidance and AI-powered matching.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                  <motion.button 
-                    className="px-8 py-4 bg-white text-blue-600 rounded-2xl font-bold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+            {/* See More Button */}
+            {(hasMoreStories || showAllStories) && (
+              <div className="flex justify-center mt-12 md:mt-16">
+                <motion.button
+                  onClick={handleShowMore}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  variants={fadeInUp}
+                >
+                  <span className="relative z-10">
+                    {showAllStories ? 'Show Less Stories' : `See More Success Stories (${filteredStories.length - storiesToShow} more)`}
+                  </span>
+                  <motion.div 
+                    className="relative z-10"
+                    animate={{ rotate: showAllStories ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <Sparkles className="w-5 h-5" />
-                    Start AI Matching
-                  </motion.button>
-                  <motion.button 
-                    className="px-8 py-4 border-2 border-white/30 text-white rounded-2xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Heart className="w-5 h-5" />
-                    Share Your Story
-                  </motion.button>
-                </div>
+                    <TrendingUp className="w-5 h-5" />
+                  </motion.div>
+                  
+                  {/* Animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Sparkle effect */}
+                  <div className="absolute inset-0 rounded-full overflow-hidden">
+                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  </div>
+                  
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700"></div>
+                </motion.button>
               </div>
-            </div>
+            )}
           </div>
         </motion.div>
       </div>

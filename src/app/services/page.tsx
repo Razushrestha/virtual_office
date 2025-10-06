@@ -452,33 +452,6 @@ export default function ServicesPage() {
             </div>
           </div>
         </motion.div>
-
-        {/* CTA Section */}
-        <motion.div 
-          className="py-20 px-6"
-          variants={fadeInUp}
-        >
-          <div className="mx-auto max-w-4xl">
-            <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl p-12 text-white text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to Start Your Study Abroad Journey?
-              </h2>
-              <p className="text-blue-100 mb-8 text-lg">
-                Get a free consultation and personalized service recommendations based on your goals.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Book Free Consultation
-                </button>
-                <button className="px-8 py-4 border border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  Call Now: +1 (555) 123-4567
-                </button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
     </>

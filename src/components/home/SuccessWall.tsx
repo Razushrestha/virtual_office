@@ -1,8 +1,12 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { ChevronRight } from 'lucide-react'
 
 export const SuccessWall: React.FC = () => {
+  const [showAllStories, setShowAllStories] = useState(false)
+  const [storiesToShow, setStoriesToShow] = useState(5) // Initially show 5 stories
+
   const testimonials = [
     {
       id: 1,
@@ -53,8 +57,121 @@ export const SuccessWall: React.FC = () => {
       university: 'Imperial College',
       gradient: 'from-cyan-400 to-blue-600',
       flag: '🇬🇧'
+    },
+    {
+      id: 6,
+      name: 'Raj Patel',
+      story: 'Obtained student visa for Masters in Business Analytics at University of Melbourne with 40% scholarship.',
+      country: 'Australia',
+      program: 'Business Analytics',
+      university: 'University of Melbourne',
+      gradient: 'from-yellow-400 to-orange-600',
+      flag: '🇦🇺'
+    },
+    {
+      id: 7,
+      name: 'Elena Rossi',
+      story: 'Successfully got F-1 visa for PhD in Artificial Intelligence at Stanford University with full funding.',
+      country: 'USA',
+      program: 'PhD AI',
+      university: 'Stanford University',
+      gradient: 'from-red-400 to-pink-600',
+      flag: '🇺🇸'
+    },
+    {
+      id: 8,
+      name: 'Muhammad Ali',
+      story: 'Approved for study permit for Masters in Engineering at University of British Columbia.',
+      country: 'Canada',
+      program: 'Engineering',
+      university: 'UBC',
+      gradient: 'from-green-400 to-emerald-600',
+      flag: '🇨🇦'
+    },
+    {
+      id: 9,
+      name: 'Jessica Taylor',
+      story: 'Received acceptance for Masters in International Relations at LSE with partial scholarship.',
+      country: 'UK',
+      program: 'International Relations',
+      university: 'London School of Economics',
+      gradient: 'from-indigo-400 to-purple-600',
+      flag: '🇬🇧'
+    },
+    {
+      id: 10,
+      name: 'Liam O\'Connor',
+      story: 'Got student visa for Masters in Renewable Energy at University of Sydney with research opportunity.',
+      country: 'Australia',
+      program: 'Renewable Energy',
+      university: 'University of Sydney',
+      gradient: 'from-teal-400 to-cyan-600',
+      flag: '🇦🇺'
+    },
+    {
+      id: 11,
+      name: 'Aisha Patel',
+      story: 'Successfully obtained F-1 visa for Masters in Data Science at Carnegie Mellon University.',
+      country: 'USA',
+      program: 'Data Science',
+      university: 'Carnegie Mellon',
+      gradient: 'from-pink-400 to-rose-600',
+      flag: '🇺🇸'
+    },
+    {
+      id: 12,
+      name: 'James Wilson',
+      story: 'Approved for study permit for PhD in Biotechnology at University of Waterloo with full funding.',
+      country: 'Canada',
+      program: 'PhD Biotechnology',
+      university: 'University of Waterloo',
+      gradient: 'from-violet-400 to-purple-600',
+      flag: '🇨🇦'
+    },
+    {
+      id: 13,
+      name: 'Fatima Al-Zahra',
+      story: 'Received acceptance for Masters in Architecture at University of Cambridge with merit award.',
+      country: 'UK',
+      program: 'Architecture',
+      university: 'University of Cambridge',
+      gradient: 'from-amber-400 to-orange-600',
+      flag: '🇬🇧'
+    },
+    {
+      id: 14,
+      name: 'Oliver Kim',
+      story: 'Got student visa for Masters in Finance at Australian National University with scholarship.',
+      country: 'Australia',
+      program: 'Finance',
+      university: 'Australian National University',
+      gradient: 'from-emerald-400 to-green-600',
+      flag: '🇦🇺'
+    },
+    {
+      id: 15,
+      name: 'Isabella Garcia',
+      story: 'Successfully obtained F-1 visa for Masters in Public Health at Harvard University.',
+      country: 'USA',
+      program: 'Public Health',
+      university: 'Harvard University',
+      gradient: 'from-blue-400 to-cyan-600',
+      flag: '🇺🇸'
     }
   ]
+
+  // Pagination logic
+  const displayedStories = showAllStories ? testimonials : testimonials.slice(0, storiesToShow)
+  const hasMoreStories = testimonials.length > storiesToShow
+
+  const handleShowMore = () => {
+    if (showAllStories) {
+      setShowAllStories(false)
+      setStoriesToShow(5)
+    } else {
+      setShowAllStories(true)
+    }
+  }
 
   return (
     <section className="relative py-20 bg-gradient-to-b from-white via-gray-50/50 to-blue-50/30">
@@ -74,24 +191,6 @@ export const SuccessWall: React.FC = () => {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Real students. Real outcomes. Your journey next.
           </p>
-          
-          {/* Mini stats bar */}
-          <div className="mt-8 inline-flex items-center gap-8 rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm px-8 py-4 shadow-lg">
-            <div className="text-center">
-              <div className="text-2xl font-black bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">4200+</div>
-              <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Approvals</div>
-            </div>
-            <div className="h-8 w-px bg-gray-200" />
-            <div className="text-center">
-              <div className="text-2xl font-black bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">97%</div>
-              <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Satisfaction</div>
-            </div>
-            <div className="h-8 w-px bg-gray-200" />
-            <div className="text-center">
-              <div className="text-2xl font-black bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">50+</div>
-              <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Partners</div>
-            </div>
-          </div>
         </div>
 
         {/* Success Stories Grid */}
@@ -136,7 +235,7 @@ export const SuccessWall: React.FC = () => {
           </motion.div>
 
           {/* Testimonial Cards */}
-          {testimonials.map((testimonial, index) => (
+          {displayedStories.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
@@ -177,6 +276,41 @@ export const SuccessWall: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* See More Button */}
+        {(hasMoreStories || showAllStories) && (
+          <div className="flex justify-center mt-12">
+            <motion.button
+              onClick={handleShowMore}
+              className="group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <span className="relative z-10">
+                {showAllStories ? 'Show Less Stories' : `See More Success Stories (${testimonials.length - storiesToShow} more)`}
+              </span>
+              <motion.div 
+                className="relative z-10"
+                animate={{ rotate: showAllStories ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </motion.div>
+              
+              {/* Animated background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Sparkle effect */}
+              <div className="absolute inset-0 rounded-full overflow-hidden">
+                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-400/20 to-blue-400/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              </div>
+            </motion.button>
+          </div>
+        )}
 
         {/* Live Feed Section */}
         <motion.div

@@ -698,43 +698,6 @@ export default function CounsellorsPage() {
             </div>
           </motion.section>
 
-          {/* CTA Section */}
-          <motion.section 
-            className="py-16 md:py-20 px-4 md:px-6"
-            variants={fadeInUp}
-          >
-            <div className="mx-auto max-w-4xl">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 rounded-2xl md:rounded-3xl blur-xl opacity-20"></div>
-                <div className="relative bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 rounded-2xl md:rounded-3xl p-8 md:p-12 text-white text-center">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6">
-                    Ready to Start Your Study Abroad Journey?
-                  </h2>
-                  <p className="text-emerald-100 mb-6 md:mb-8 text-base md:text-xl leading-relaxed">
-                    Book a free consultation with our expert counsellors and take the first step towards your dream education.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                    <motion.button 
-                      className="px-8 py-4 bg-white text-emerald-600 rounded-2xl font-bold hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Sparkles className="w-5 h-5" />
-                      Book Free Consultation
-                    </motion.button>
-                    <motion.button 
-                      className="px-8 py-4 border-2 border-white/30 text-white rounded-2xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <PlayCircle className="w-5 h-5" />
-                      Watch Demo
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.section>
         </div>
       </main>
     </>
